@@ -1,0 +1,9 @@
+D:\LTCSDL_HTTour\DAL_TourDL\bin\Debug\DAL_TourDL.dll
+D:\LTCSDL_HTTour\DAL_TourDL\bin\Debug\DAL_TourDL.pdb
+D:\LTCSDL_HTTour\DAL_TourDL\bin\Debug\DTO_TourDL.dll
+D:\LTCSDL_HTTour\DAL_TourDL\bin\Debug\DTO_TourDL.pdb
+D:\LTCSDL_HTTour\DAL_TourDL\obj\Debug\DAL_TourDL.csproj.AssemblyReference.cache
+D:\LTCSDL_HTTour\DAL_TourDL\obj\Debug\DAL_TourDL.csproj.CoreCompileInputs.cache
+D:\LTCSDL_HTTour\DAL_TourDL\obj\Debug\DAL_TourDL.csproj.Up2Date
+D:\LTCSDL_HTTour\DAL_TourDL\obj\Debug\DAL_TourDL.dll
+D:\LTCSDL_HTTour\DAL_TourDL\obj\Debug\DAL_TourDL.pdb

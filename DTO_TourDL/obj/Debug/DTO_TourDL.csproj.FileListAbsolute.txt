@@ -1,0 +1,6 @@
+D:\LTCSDL_HTTour\DTO_TourDL\bin\Debug\DTO_TourDL.dll
+D:\LTCSDL_HTTour\DTO_TourDL\bin\Debug\DTO_TourDL.pdb
+D:\LTCSDL_HTTour\DTO_TourDL\obj\Debug\DTO_TourDL.csproj.AssemblyReference.cache
+D:\LTCSDL_HTTour\DTO_TourDL\obj\Debug\DTO_TourDL.csproj.CoreCompileInputs.cache
+D:\LTCSDL_HTTour\DTO_TourDL\obj\Debug\DTO_TourDL.dll
+D:\LTCSDL_HTTour\DTO_TourDL\obj\Debug\DTO_TourDL.pdb
