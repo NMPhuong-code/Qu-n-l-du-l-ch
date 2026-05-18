@@ -10,6 +10,8 @@ namespace DAL_TourDL
 {
     public class DAL_LuuDonHang
     {
+        private string connStr = @"Data Source=.;Initial Catalog=QuanLyTour;Integrated Security=True";
+
         public bool LuuDonHang(DTO_DatTourTronGoi data)
         {
             using (SqlConnection conn = new SqlConnection(connStr))

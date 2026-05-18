@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO_TourDL", "..\DTO_TourDL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_TourDL", "..\DAL_TourDL\DAL_TourDL.csproj", "{D639AE72-F152-4638-BC8C-EAE4A2B95F76}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{09E4B7B3-8804-4CA8-B37C-82B3D67A74C1}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\QuanLiTour.sql = ..\..\QuanLiTour.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
