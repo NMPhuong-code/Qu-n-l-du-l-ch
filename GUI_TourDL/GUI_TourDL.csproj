@@ -121,6 +121,12 @@
     <EmbeddedResource Include="UC_HanhKhach.resx">
       <DependentUpon>UC_HanhKhach.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Database\.vs\Database\FileContentIndex\a42c7a56-146b-4156-8700-258544bff9ab.vsidx" />
+    <None Include="Database\.vs\Database\v17\.wsuo" />
+    <None Include="Database\.vs\Database\v17\DocumentLayout.json" />
+    <None Include="Database\.vs\ProjectSettings.json" />
+    <None Include="Database\.vs\slnx.sqlite" />
+    <None Include="Database\.vs\VSWorkspaceState.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -173,6 +179,11 @@
       <Project>{c31a0206-6a2a-4db0-b139-dcaf66ebdb1d}</Project>
       <Name>DTO_TourDL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\QuanLiTour.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
