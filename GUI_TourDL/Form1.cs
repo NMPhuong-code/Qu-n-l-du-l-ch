@@ -45,21 +45,36 @@ namespace GUI_TourDL
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if(cbDiaDiem.SelectedIndex<0|| cbNganSach.SelectedIndex <= 0)
+            if (cbDiaDiem.SelectedIndex < 0 || cbNganSach.SelectedIndex <= 0)
             {
-                MessageBox.Show("Vui lòng chọn Địa điểm và Ngân sách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Vui lòng chọn Địa điểm và Ngân sách",
+                    "Thông báo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
                 return;
             }
-          
-            // DÙNG .Text THAY VÌ .SelectedItem.ToString() SẼ KHÔNG BAO GIỜ BỊ LỖI VĂNG APP
+
             string diaDiem = cbDiaDiem.Text;
+
             string nganSach = cbNganSach.Text;
 
-            // Lấy ngày đi
-            DateTime ngayDi = cbNgayDi.Checked ? cbNgayDi.Value : DateTime.MinValue;
+            // Lấy ngày đi đúng
+            DateTime? ngayDi = null;
 
-            // Mở Form kết quả
-            Form_TimKiem frmKetQua = new Form_TimKiem(diaDiem, ngayDi, nganSach);
+            if (cbNgayDi.Checked)
+            {
+                ngayDi = cbNgayDi.Value.Date;
+            }
+
+            // Mở form kết quả
+            Form_TimKiem frmKetQua =
+                new Form_TimKiem(
+                diaDiem,
+                ngayDi,
+                nganSach);
+
             frmKetQua.Show();
         }
 

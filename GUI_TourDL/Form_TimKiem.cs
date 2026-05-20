@@ -15,10 +15,9 @@ namespace GUI_TourDL
     public partial class Form_TimKiem : Form
     {
         string _diaDiem, _nganSach;
-        DateTime _ngayDi; // Đổi biến này thành kiểu DateTime
+        DateTime? _ngayDi;
 
-        // Sửa hàm nhận dữ liệu để khớp với Form1
-        public Form_TimKiem(string diaDiem, DateTime ngayDi, string nganSach)
+        public Form_TimKiem(string diaDiem, DateTime? ngayDi, string nganSach)
         {
             InitializeComponent();
             _diaDiem = diaDiem;
@@ -30,18 +29,19 @@ namespace GUI_TourDL
         {
             FlowPanel_Tour.Controls.Clear();
 
-            // 1. Gọi BUS xử lý toàn bộ logic nhức đầu (Truyền 3 từ khóa vào)
             BUS_Tour busTour = new BUS_Tour();
             var ketQua = busTour.TimKiemTour(_diaDiem, _ngayDi, _nganSach);
 
-            // 2. Chỉ việc lấy kết quả vẽ ra màn hình
             foreach (var item in ketQua)
             {
                 ListTour theTour = new ListTour();
                 theTour.TenTour = item.TenTour;
                 theTour.GiaTien = item.GiaCoBan.ToString("N0") + " VNĐ";
-                theTour.ThoiGian = item.ThoiGianHienThi;
-
+                theTour.Data = item;
+                theTour.SoChoConTrong = item.SoChoConTrong;
+                theTour.NgayKhoiHanh ="Khởi hành: "
+                + item.NgayKhoiHanh.ToString("dd/MM/yyyy");
+                theTour.OnSelect += TheTour_OnSelect;
 
                 FlowPanel_Tour.Controls.Add(theTour);
             }
@@ -50,6 +50,21 @@ namespace GUI_TourDL
             {
                 Label lblNoResult = new Label() { Text = "Không tìm thấy tour phù hợp!", AutoSize = true };
                 FlowPanel_Tour.Controls.Add(lblNoResult);
+            }
+        }
+
+        private void TheTour_OnSelect(object sender, EventArgs e)
+        {
+            ListTour theTourClicked = (ListTour)sender;
+
+            if (theTourClicked.Data != null)
+            {
+                Form_datTour formDatTour =
+    new Form_datTour(theTourClicked.Data);
+                formDatTour.StartPosition = FormStartPosition.CenterScreen;
+                formDatTour.ShowDialog();
+
+                HienThiKetQua();
             }
         }
 
@@ -62,9 +77,7 @@ namespace GUI_TourDL
         {
             if (_diaDiem != "" && _diaDiem != "-- Chọn địa điểm --")
             {
-                // Viết hoa chữ cái đầu cho đẹp (VD: đà lạt -> Đà Lạt)
                 string tenDiaDiemHienThi = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(_diaDiem.ToLower());
-
                 lblKetquaTK.Text = "Du lịch " + tenDiaDiemHienThi;
             }
             else
@@ -72,7 +85,6 @@ namespace GUI_TourDL
                 lblKetquaTK.Text = "Tất cả các Tour";
             }
 
-            // Chạy hàm hiển thị danh sách
             HienThiKetQua();
         }
     }
