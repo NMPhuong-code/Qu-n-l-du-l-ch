@@ -13,36 +13,39 @@ namespace BUS_TourDL
         DAL_Tour dalTour = new DAL_Tour();
 
         public List<Tourmodel> TimKiemTour(
-     string diaDiem,
-     DateTime ngayDi,
-     string nganSach)
+     string diaDiem, DateTime? ngayDi, string nganSach)
         {
-            var ketQua =
-                dalTour.TimKiemTour(diaDiem);
+            decimal? giaToiDa = null;
 
-            // Lọc ngân sách
             if (nganSach == "Dưới 4 triệu")
-            {
-                ketQua = ketQua.Where(t =>
-                    t.GiaCoBan < 4000000)
-                    .ToList();
-            }
+                giaToiDa = 4000000;
             else if (nganSach == "Từ 4 - 6 triệu")
-            {
-                ketQua = ketQua.Where(t =>
-                    t.GiaCoBan >= 4000000 &&
-                    t.GiaCoBan <= 6000000)
-                    .ToList();
-            }
+                giaToiDa = 6000000;
             else if (nganSach == "Trên 6 triệu")
-            {
-                ketQua = ketQua.Where(t =>
-                    t.GiaCoBan > 6000000)
-                    .ToList();
-            }
+                giaToiDa = 999999999;
 
-            return ketQua;
+            return dalTour.TimKiemTour(diaDiem, ngayDi, giaToiDa);
         }
-        public List<Tourmodel> LayTatCa() => dalTour.GetAllTour();
+        public bool ThucHienDatTour(DTO_DatTourTronGoi donDat)
+        {
+            return dalTour.LuuDonDatTour(donDat);
+        }
+        public List<Tourmodel> LayTatCa()
+        {
+            return dalTour.GetAllTour();
+        }
+        public bool themTour(Tourmodel tour)
+        {
+            return dalTour.themTour(tour);
+        }
+        public bool suaTour(Tourmodel tour)
+        {
+            return dalTour.suaTour(tour);
+        }
+        public bool xoaTour(int Id)
+        {
+            return dalTour.xoaTour(Id);
+        }
+        
     }
 }

@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bus_DiaDanh.cs" />
+    <Compile Include="BUS_LichKhoiHanh.cs" />
+    <Compile Include="BUS_NhomQuyen.cs" />
+    <Compile Include="BUS_TaiKhoan.cs" />
     <Compile Include="BUS_Tour.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

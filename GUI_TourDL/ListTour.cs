@@ -52,7 +52,18 @@ namespace GUI_TourDL
         public string ThoiGian
         {
             get { return lblThoiGian.Text; }
-            set { lblThoiGian.Text = value; }
+
+            set
+            {
+                if (value == "0 ngày 0 đêm")
+                {
+                    lblThoiGian.Text = "";
+                }
+                else
+                {
+                    lblThoiGian.Text = value;
+                }
+            }
         }
         public Image AnhTour
         {
@@ -60,6 +71,11 @@ namespace GUI_TourDL
             set { picTour.Image = value; }
         }
     private void ListTour_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblThoiGian_Click(object sender, EventArgs e)
         {
 
         }

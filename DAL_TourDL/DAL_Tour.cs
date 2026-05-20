@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using DTO_TourDL;
@@ -23,109 +25,345 @@ namespace DAL_TourDL
             //nếu thấy phức tạp thì có thể bỏ 
             //tiếp theo là lấy ảnh đại diện, không có thì trả về default.jpn
             //tính số ngày lấy ngày kết thúc - ngày khởi hành 
-            String sql = @"SELECT t.Id AS IDTour, t.TenTour, t.MoTa, t.GiaCoBan, 
-
-                 CASE 
-                         WHEN t.TrangThai =1
-                         THEN N'ĐANG HOẠT ĐỘNG'
-                         ELSE N'NGƯNG HOẠT ĐỘNG'
-                      END AS TrangThai,
-                ISNULL(
-                            MAX(CASE 
-                                    WHEN ha.AnhDaiDien = 1 
-                                    THEN ha.URL_Anh 
-                            END),'default.jpg') AS HinhAnh,
-
-                ISNULL(
-                            DATEDIFF(
-                                DAY,
-                                MIN(l.NgayKhoiHanh),
-                                MIN(l.NgayKetThuc)
-                            ) + 1,
-                            0
-                        ) AS SoNgay,
-                ISNULL(
-                            DATEDIFF(
-                                DAY,
-                                MIN(l.NgayKhoiHanh),
-                                MIN(l.NgayKetThuc)
-                            ),
-                            0
-                        ) AS SoDem
-
+            string sql = @"
+                SELECT 
+                    t.Id,
+                    t.TenTour,
+                    t.MoTa,
+                    t.GiaCoBan,
+                    t.TrangThai,
+                    ISNULL(ha.URL_Anh, 'default.jpg') AS HinhAnh
                 FROM Tour t
-                    LEFT JOIN LichKhoiHanh l ON t.Id = l.IdTour
-                    LEFT JOIN HinhAnhTour ha ON t.Id = ha.IdTour
-                    GROUP BY
-                        t.Id, t.TenTour,t.MoTa, t.GiaCoBan, t.TrangThai                         
-                    ";
-            //join với lịch khởi hành ( id và id_Tour trong bảng lịch khởi hành) 
-            //join hình ảnh tour với tour để lấy hình ảnh tour 
-            //nhóm theo id, tên, mô tả, giá, trạng thái 
+                OUTER APPLY
+                (
+                    SELECT TOP 1 URL_Anh
+                    FROM HinhAnhTour
+                    WHERE IdTour = t.Id
+                      AND AnhDaiDien = 1
+                ) ha
+                WHERE t.TrangThai = 1";
 
             SqlCommand cmd = new SqlCommand(sql, _conn);
-            //đọc từng dòng dữ liệu trả về.
+
+            if (_conn.State == ConnectionState.Closed)
+                _conn.Open();
+
             SqlDataReader dr = cmd.ExecuteReader();
-            //dùng vòng while để đọc từng dòng 1 
-            //lấ
-            while (dr.Read())
-            {
-                //trong mỗi vòng lặp tạo 1 object mới để làm biến tạm 
-                //lấy dưx liệu từ sql gán vào 
-
-                Tourmodel tour = new Tourmodel();
-                tour.IDTour = dr["IdTour"].ToString();
-                tour.TenTour = dr["TenTour"].ToString();
-                tour.MoTa = dr["Mota"].ToString();
-                tour.GiaCoBan = Convert.ToDecimal(dr["GiaCoBan"]);
-                // Kiểm tra nếu cột HinhAnh trong DB bị NULL thì tránh lỗi
-                tour.HinhAnh = dr["HinhAnh"] != DBNull.Value ? dr["HinhAnh"].ToString() : "default.jpg";
-                tour.SoNgay = Convert.ToInt32(dr["SoNgay"]);
-                tour.SoDem = Convert.ToInt32(dr["SoDem"]);
-                dsTour.Add(tour);
-
-            }
-
-
-            return dsTour;//trả ds về 
-        }
-        //tìm kiếm theo tỉnh thành
-        //LOGIC: Khi nhập địa điểm vào(hiện tại đang là chọn tỉnh thành từ combobox) -> hiển thị các tour có ở tỉnh đó 
-        public List<Tourmodel> TimKiemTour(string tinhThanh)
-        {
-            List<Tourmodel> dsTour =
-                new List<Tourmodel>();
-    //chọn các thuộc tính của tour thuộc bảng tour, sau đó kết nối với bảng tour_DiadjDanh và nối với bảng địa danh để biết được 1 tour có
-    // thể đi qua những địa danh nào và đi qua tỉnh nào -> truy xuất dữ liệu tìm kiếm 
-    //where -> lọc theo tỉnh 
-            string sql = @"
-        SELECT DISTINCT t.Id, t.TenTour, t.MoTa, t.GiaCoBan, t.TrangThai
-        FROM Tour t
-        INNER JOIN Tour_DiaDanh td ON t.Id = td.IdTour
-        INNER JOIN DiaDanh dd ON td.IdDiaDanh = dd.Id
-        WHERE dd.TinhThanh = @TinhThanh";
-
-            SqlCommand cmd = new SqlCommand(sql, _conn);          
-            cmd.Parameters.AddWithValue(
-                "@TinhThanh",
-                tinhThanh);
-
-            _conn.Open();
-
-            SqlDataReader dr =
-                cmd.ExecuteReader();
 
             while (dr.Read())
             {
                 Tourmodel tour = new Tourmodel();
-                tour.IDTour = dr["Id"].ToString();
+
+                tour.Id = Convert.ToInt32(dr["Id"]);
                 tour.TenTour = dr["TenTour"].ToString();
                 tour.MoTa = dr["MoTa"].ToString();
                 tour.GiaCoBan = Convert.ToDecimal(dr["GiaCoBan"]);
-                tour.TrangThai = dr["TrangThai"].ToString();
+                tour.TrangThai = Convert.ToBoolean(dr["TrangThai"]);
+                tour.HinhAnh = dr["HinhAnh"].ToString();
+
+                tour.IdLich = 0;
+                tour.SoChoConTrong = 0;
+
                 dsTour.Add(tour);
             }
-           return dsTour;
+
+            dr.Close();
+            _conn.Close();
+
+            return dsTour;
+        }
+        public List<Tourmodel> TimKiemTour(
+          string tinhThanh,
+          DateTime? ngayDi,
+          decimal? nganSach)
+        {
+            List<Tourmodel> dsTour = new List<Tourmodel>();
+
+            string sql = @"
+    SELECT 
+        t.Id,
+        t.TenTour,
+        t.MoTa,
+        t.GiaCoBan,
+        t.TrangThai,
+
+        lkh.Id AS IdLich,
+        lkh.NgayKhoiHanh,
+
+        (
+            ISNULL(lkh.SoChoToiDa, 0)
+            - ISNULL(DA_DAT.TongDaDat, 0)
+        ) AS SoChoConTrong,
+
+        ISNULL(ha.URL_Anh, 'default.jpg') AS HinhAnh
+
+    FROM Tour t
+
+    INNER JOIN Tour_DiaDanh td
+        ON t.Id = td.IdTour
+
+    INNER JOIN DiaDanh dd
+        ON td.IdDiaDanh = dd.Id
+
+    INNER JOIN LichKhoiHanh lkh
+        ON t.Id = lkh.IdTour
+
+    LEFT JOIN
+    (
+        SELECT 
+            IdLichKhoiHanhBanDau,
+            SUM(SoLuongNguoi) AS TongDaDat
+        FROM DonDatTour
+        WHERE TrangThaiDon = N'Đã thanh toán'
+        GROUP BY IdLichKhoiHanhBanDau
+    ) DA_DAT
+        ON lkh.Id = DA_DAT.IdLichKhoiHanhBanDau
+
+    OUTER APPLY
+    (
+        SELECT TOP 1 URL_Anh
+        FROM HinhAnhTour
+        WHERE IdTour = t.Id
+        AND AnhDaiDien = 1
+    ) ha
+
+    WHERE 
+        dd.TinhThanh = @TinhThanh
+
+        AND (
+    @NgayDi IS NULL
+    OR CAST(lkh.NgayKhoiHanh AS DATE)
+       = CAST(@NgayDi AS DATE)
+)
+
+        AND (
+            @NganSach IS NULL
+            OR t.GiaCoBan <= @NganSach
+        )
+
+        AND t.TrangThai = 1
+
+        AND (
+            ISNULL(lkh.SoChoToiDa, 0)
+            - ISNULL(DA_DAT.TongDaDat, 0)
+        ) > 0";
+
+            SqlCommand cmd = new SqlCommand(sql, _conn);
+
+            cmd.Parameters.AddWithValue("@TinhThanh", tinhThanh);
+            if (ngayDi.HasValue)
+            {
+                cmd.Parameters.AddWithValue(
+                    "@NgayDi",
+                    ngayDi.Value.Date);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue(
+                    "@NgayDi",
+                    DBNull.Value);
+            }
+
+            if (nganSach.HasValue)
+                cmd.Parameters.AddWithValue("@NganSach", nganSach.Value);
+            else
+                cmd.Parameters.AddWithValue("@NganSach", DBNull.Value);
+
+            if (_conn.State == ConnectionState.Closed)
+                _conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                Tourmodel tour = new Tourmodel();
+
+                tour.Id = Convert.ToInt32(dr["Id"]);
+                tour.TenTour = dr["TenTour"].ToString();
+                tour.MoTa = dr["MoTa"].ToString();
+                tour.GiaCoBan = Convert.ToDecimal(dr["GiaCoBan"]);
+                tour.TrangThai = Convert.ToBoolean(dr["TrangThai"]);
+                tour.HinhAnh = dr["HinhAnh"].ToString();
+
+                tour.IdLich = Convert.ToInt32(dr["IdLich"]);
+
+                tour.SoChoConTrong =
+                    Convert.ToInt32(dr["SoChoConTrong"]);
+                tour.NgayKhoiHanh =
+                Convert.ToDateTime(dr["NgayKhoiHanh"]);
+
+                dsTour.Add(tour);
+            }
+
+            dr.Close();
+            _conn.Close();
+
+            return dsTour;
+        }
+
+        public bool LuuDonDatTour(DTO_DatTourTronGoi don)
+        {
+            if (_conn.State == ConnectionState.Closed)
+                _conn.Open();
+
+            SqlTransaction tran = _conn.BeginTransaction();
+
+            try
+            {
+                string sqlCheck = @"
+                    SELECT 
+                        lkh.SoChoToiDa - ISNULL(DA_DAT.DaDat, 0) AS ChoConTrong
+                    FROM LichKhoiHanh lkh WITH (UPDLOCK, HOLDLOCK)
+                    LEFT JOIN
+                    (
+                        SELECT 
+                            IdLichKhoiHanhBanDau,
+                            SUM(SoLuongNguoi) AS DaDat
+                        FROM DonDatTour
+                        WHERE TrangThaiDon = N'Đã thanh toán'
+                        GROUP BY IdLichKhoiHanhBanDau
+                    ) DA_DAT
+                        ON lkh.Id = DA_DAT.IdLichKhoiHanhBanDau
+                    WHERE lkh.Id = @IdLich";
+
+                SqlCommand cmdCheck = new SqlCommand(sqlCheck, _conn, tran);
+                cmdCheck.Parameters.AddWithValue("@IdLich", don.IdLich);
+
+                object checkResult = cmdCheck.ExecuteScalar();
+
+                int choConTrong = checkResult != null && checkResult != DBNull.Value
+                    ? Convert.ToInt32(checkResult)
+                    : 0;
+
+
+                if (choConTrong < don.SoLuong)
+                {
+                    throw new Exception(
+        "IdLich: " + don.IdLich
+        + "\nChoConTrong: " + choConTrong
+        + "\nSoLuong: " + don.SoLuong);
+                }
+
+
+                string sqlInsert = @"
+                    INSERT INTO DonDatTour 
+                    (
+                        IdKhachHang,
+                        IdLichKhoiHanhBanDau,
+                        SoLuongNguoi,
+                        HinhThucDatTour,
+                        TongTienGoc,
+                        TongTienThanhToan,
+                        TrangThaiDon,
+                        NgayDat
+                    )
+                    VALUES 
+                    (
+                        @IdKhachHang,
+                        @IdLichKhoiHanhBanDau,
+                        @SoLuongNguoi,
+                        @HinhThucDatTour,
+                        @TongTienGoc,
+                        @TongTienThanhToan,
+                        @TrangThaiDon,
+                        @NgayDat
+                    )";
+
+                SqlCommand cmdInsert = new SqlCommand(sqlInsert, _conn, tran);
+
+                int maKH = don.IdKhachHang > 0 ? don.IdKhachHang : 1;
+
+                cmdInsert.Parameters.AddWithValue("@IdKhachHang", maKH);
+                cmdInsert.Parameters.AddWithValue("@IdLichKhoiHanhBanDau", don.IdLich);
+                cmdInsert.Parameters.AddWithValue("@SoLuongNguoi", don.SoLuong);
+                cmdInsert.Parameters.AddWithValue("@HinhThucDatTour", don.HinhThucDatTour ?? (object)DBNull.Value);
+                cmdInsert.Parameters.AddWithValue("@TongTienGoc", don.TongTienGoc);
+                cmdInsert.Parameters.AddWithValue("@TongTienThanhToan", don.TongTienThanhToan);
+                cmdInsert.Parameters.AddWithValue("@TrangThaiDon", don.TrangThaiDon ?? (object)DBNull.Value);
+                cmdInsert.Parameters.AddWithValue("@NgayDat", don.NgayDat);
+
+                cmdInsert.ExecuteNonQuery();
+
+                tran.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                tran.Rollback();
+
+                throw;
+            }
+            finally
+            {
+                if (_conn.State == ConnectionState.Open)
+                    _conn.Close();
+            }
+        }
+    public bool themTour(Tourmodel tour)
+    {
+        try
+        {
+            _conn.Open();
+            string sql = string.Format(
+                "INSERT INTO Tour(TenTour,MoTa,GiaCo,Ban,TrangThai"
+                + "VALUES (N'{0},N'{1},{2},{3})",
+                tour.TenTour,
+                tour.MoTa,
+                tour.GiaCoBan,
+                tour.TrangThai
+                );
+            SqlCommand cmd = new SqlCommand(sql, _conn);
+            if (cmd.ExecuteNonQuery() > 0)
+                return true;
+        }
+        catch
+        {
+
+        }
+        finally
+        {
+            _conn.Close();
+        }
+        return false;
+    }
+        public bool suaTour(Tourmodel tour)
+        {
+            try
+            {
+                _conn.Open();
+                string sql =
+                "UPDATE Tour SET" +
+                "TenTour = N'" + tour.TenTour + "', " +
+                "MoTa = N'" + tour.MoTa + "', " +
+                "GiaCoBang = " + tour.GiaCoBan + ", " +
+                "TrangThai = " + tour.TrangThai +
+                " WHERE Id = " + tour.Id;
+                SqlCommand cmd = new SqlCommand(sql, _conn);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+
+            }
+            catch { }
+            finally { _conn.Close(); }
+            return false;
+        }
+        public bool xoaTour(int Id)
+        {
+            try
+            {
+                _conn.Open();
+                string sql =
+                    "UPDATE Tour SET TRANGTHAI = 0 WHERE Id = " +Id;
+                SqlCommand cmd = new SqlCommand(sql, _conn);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch
+            {
+
+            }
+            finally { _conn.Close(); }
+            return false;
         }
     }
 }

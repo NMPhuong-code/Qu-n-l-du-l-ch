@@ -8,23 +8,15 @@ namespace DTO_TourDL
 {
     public class Tourmodel
     {
-        // Khớp với bảng Tour trong Database
-        public string IDTour { get; set; }
+        public int Id { get; set; }
         public string TenTour { get; set; }
         public string MoTa { get; set; }
-        public int SoNgay { get; set; }
-        public int SoDem { get; set; }
-        public decimal GiaCoBan { get; set; } // Dùng decimal cho tiền tệ sẽ chính xác hơn int
-        public string TrangThai { get; set; }
-
-        // Trường bổ sung để phục vụ hiển thị trên GUI (không nhất thiết có trong DB)
-        // Lưu đường dẫn file ảnh: "vungtau.jpg" hoặc "dalat.png"
+        public decimal GiaCoBan { get; set; }
+        public bool TrangThai { get; set; }
         public string HinhAnh { get; set; }
-
-        // Thuộc tính tự chế để hiện thị chuỗi "3 ngày 2 đêm" cho nhanh
-        public string ThoiGianHienThi
-        {
-            get { return SoNgay + " ngày " + SoDem + " đêm"; }
-        }
+        public int SoChoConTrong { get; set; }
+        public int IdLich { get; set; }
+        public DateTime NgayKhoiHanh { get; set; }
+        public Tourmodel() { }  
     }
 }

@@ -11,7 +11,7 @@ namespace DAL_TourDL
     {
         protected SqlConnection _conn =
         new SqlConnection(
-         @"Data Source=LAPTOP-VIMIDAVM\SQLEXPRESS;
+         @"Data Source=.;
           Initial Catalog=QuanLyTour;
           Integrated Security=True");
     }

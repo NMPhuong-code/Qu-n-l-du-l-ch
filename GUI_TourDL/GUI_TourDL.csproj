@@ -52,6 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,12 @@
     </Compile>
     <Compile Include="Form_datTour.Designer.cs">
       <DependentUpon>Form_datTour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_NhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_NhanVien.Designer.cs">
+      <DependentUpon>Form_NhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_ThanhToan.cs">
       <SubType>Form</SubType>
@@ -90,14 +102,45 @@
     <Compile Include="UC_HanhKhach.Designer.cs">
       <DependentUpon>UC_HanhKhach.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_QuanLyLichKhoiHanh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QuanLyLichKhoiHanh.Designer.cs">
+      <DependentUpon>UC_QuanLyLichKhoiHanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QuanLyNguoiDung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QuanLyNguoiDung.Designer.cs">
+      <DependentUpon>UC_QuanLyNguoiDung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QuanLyTaiKhoan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QuanLyTaiKhoan.Designer.cs">
+      <DependentUpon>UC_QuanLyTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QuanLyTour.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QuanLyTour.Designer.cs">
+      <DependentUpon>UC_QuanLyTour.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_DangNhap.resx">
       <DependentUpon>Form_DangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_datTour.resx">
       <DependentUpon>Form_datTour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_NhanVien.resx">
+      <DependentUpon>Form_NhanVien.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_ThanhToan.resx">
       <DependentUpon>Form_ThanhToan.cs</DependentUpon>
@@ -121,12 +164,18 @@
     <EmbeddedResource Include="UC_HanhKhach.resx">
       <DependentUpon>UC_HanhKhach.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Database\.vs\Database\FileContentIndex\a42c7a56-146b-4156-8700-258544bff9ab.vsidx" />
-    <None Include="Database\.vs\Database\v17\.wsuo" />
-    <None Include="Database\.vs\Database\v17\DocumentLayout.json" />
-    <None Include="Database\.vs\ProjectSettings.json" />
-    <None Include="Database\.vs\slnx.sqlite" />
-    <None Include="Database\.vs\VSWorkspaceState.json" />
+    <EmbeddedResource Include="UC_QuanLyLichKhoiHanh.resx">
+      <DependentUpon>UC_QuanLyLichKhoiHanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QuanLyNguoiDung.resx">
+      <DependentUpon>UC_QuanLyNguoiDung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QuanLyTaiKhoan.resx">
+      <DependentUpon>UC_QuanLyTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QuanLyTour.resx">
+      <DependentUpon>UC_QuanLyTour.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
