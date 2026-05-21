@@ -47,5 +47,11 @@ namespace GUI_TourDL
             UC_QuanLyTaiKhoan uc = new UC_QuanLyTaiKhoan();
             LoadControl(uc);
         }
+
+        private void btnQuanLyNguoiDung_Click(object sender, EventArgs e)
+        {
+            UC_QuanLyNguoiDung uc = new UC_QuanLyNguoiDung();
+            LoadControl(uc);
+        }
     }
 }

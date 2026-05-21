@@ -167,6 +167,7 @@
             this.btnQuanLyNguoiDung.Text = "Quản Lý Người Dùng";
             this.btnQuanLyNguoiDung.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQuanLyNguoiDung.UseVisualStyleBackColor = true;
+            this.btnQuanLyNguoiDung.Click += new System.EventHandler(this.btnQuanLyNguoiDung_Click);
             // 
             // lblLogo
             // 
