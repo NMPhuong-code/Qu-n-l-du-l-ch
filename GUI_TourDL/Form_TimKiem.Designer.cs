@@ -45,9 +45,10 @@
             // 
             // FlowPanel_Tour
             // 
-            this.FlowPanel_Tour.Location = new System.Drawing.Point(82, 139);
+            this.FlowPanel_Tour.AutoScroll = true;
+            this.FlowPanel_Tour.Location = new System.Drawing.Point(30, 139);
             this.FlowPanel_Tour.Name = "FlowPanel_Tour";
-            this.FlowPanel_Tour.Size = new System.Drawing.Size(564, 250);
+            this.FlowPanel_Tour.Size = new System.Drawing.Size(838, 615);
             this.FlowPanel_Tour.TabIndex = 0;
             // 
             // label1
@@ -71,7 +72,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 83);
+            this.panel2.Size = new System.Drawing.Size(880, 83);
             this.panel2.TabIndex = 13;
             // 
             // button2
@@ -79,7 +80,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(82, 26);
+            this.button2.Location = new System.Drawing.Point(162, 26);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(93, 31);
             this.button2.TabIndex = 1;
@@ -90,7 +91,7 @@
             // 
             this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(463, 26);
+            this.btnLogin.Location = new System.Drawing.Point(543, 26);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(106, 31);
             this.btnLogin.TabIndex = 7;
@@ -102,7 +103,7 @@
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.Color.Khaki;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(181, 24);
+            this.button3.Location = new System.Drawing.Point(261, 24);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(167, 31);
             this.button3.TabIndex = 2;
@@ -123,7 +124,7 @@
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(354, 26);
+            this.button4.Location = new System.Drawing.Point(434, 26);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(91, 31);
             this.button4.TabIndex = 3;
@@ -168,7 +169,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(880, 788);
             this.Controls.Add(this.lblKetquaTK);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.linkTrangchu);

@@ -220,6 +220,11 @@
     <None Include="Resources\google.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Database\QuanLiTour.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\BUS_TourDL\BUS_TourDL.csproj">
       <Project>{8d6587fa-1e92-420d-90eb-0efb1e7d1a7a}</Project>
       <Name>BUS_TourDL</Name>
@@ -228,11 +233,6 @@
       <Project>{c31a0206-6a2a-4db0-b139-dcaf66ebdb1d}</Project>
       <Name>DTO_TourDL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Database\QuanLiTour.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

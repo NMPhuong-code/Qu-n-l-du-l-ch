@@ -2,9 +2,6 @@
 using DTO_TourDL;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BUS_TourDL
 {
@@ -12,8 +9,7 @@ namespace BUS_TourDL
     {
         DAL_Tour dalTour = new DAL_Tour();
 
-        public List<Tourmodel> TimKiemTour(
-     string diaDiem, DateTime? ngayDi, string nganSach)
+        public List<Tourmodel> TimKiemTour(string diaDiem, DateTime? ngayDi, string nganSach)
         {
             decimal? giaToiDa = null;
 
@@ -26,14 +22,18 @@ namespace BUS_TourDL
 
             return dalTour.TimKiemTour(diaDiem, ngayDi, giaToiDa);
         }
+
         public bool ThucHienDatTour(DTO_DatTourTronGoi donDat)
         {
             return dalTour.LuuDonDatTour(donDat);
         }
+
         public List<Tourmodel> LayTatCa()
         {
             return dalTour.GetAllTour();
         }
+ 
+        
         public bool themTour(Tourmodel tour)
         {
             return dalTour.themTour(tour);

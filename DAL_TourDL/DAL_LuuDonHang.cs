@@ -33,7 +33,7 @@ namespace DAL_TourDL
                     cmdDon.Parameters.AddWithValue("@idKH", idKH);
                     cmdDon.Parameters.AddWithValue("@idLich", data.IdLich);
                     cmdDon.Parameters.AddWithValue("@soLuong", data.SoLuong);
-                    cmdDon.Parameters.AddWithValue("@tongTien", data.TongTien);
+                    cmdDon.Parameters.AddWithValue("@tongTien", data.TongTienThanhToan);
                     int idDonMoi = (int)cmdDon.ExecuteScalar();
 
                     // 3. Vòng lặp lưu danh sách người đi (DTO_NguoiDiTour)
@@ -42,7 +42,7 @@ namespace DAL_TourDL
                         string sqlNguoi = "INSERT INTO DanhSachKhachHangTheoTour (IdDonDatTour, HoTen, CCCD) VALUES (@idDon, @ten, @cccd)";
                         SqlCommand cmdNguoi = new SqlCommand(sqlNguoi, conn, trans);
                         cmdNguoi.Parameters.AddWithValue("@idDon", idDonMoi);
-                        cmdNguoi.Parameters.AddWithValue("@ten", nguoi.HoTen);
+                        cmdNguoi.Parameters.AddWithValue("@ten", nguoi.TenNguoi);
                         cmdNguoi.Parameters.AddWithValue("@cccd", nguoi.CCCD);
                         cmdNguoi.ExecuteNonQuery();
                     }

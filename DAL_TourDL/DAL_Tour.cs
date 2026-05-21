@@ -8,23 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO_TourDL;
 
+
 namespace DAL_TourDL
 {
     public class DAL_Tour : DBConnect
     {
-        //lấy toàn bộ tour từ sql trả về dạng list
         public List<Tourmodel> GetAllTour()
         {
-            //1. Tạo một danh sách tour 
             List<Tourmodel> dsTour = new List<Tourmodel>();
 
-            //mở kết nối đến dtb
-            _conn.Open();
-            //lấy dữ liệu từ bảng tour
-            // các CASE Trạng thái dùng để hiện thị trạng thái của tour là đã hoạt động hay ngưng hoạt động
-            //nếu thấy phức tạp thì có thể bỏ 
-            //tiếp theo là lấy ảnh đại diện, không có thì trả về default.jpn
-            //tính số ngày lấy ngày kết thúc - ngày khởi hành 
             string sql = @"
                 SELECT 
                     t.Id,
@@ -72,10 +64,11 @@ namespace DAL_TourDL
 
             return dsTour;
         }
+
         public List<Tourmodel> TimKiemTour(
-          string tinhThanh,
-          DateTime? ngayDi,
-          decimal? nganSach)
+    string tinhThanh,
+    DateTime? ngayDi,
+    decimal? nganSach)
         {
             List<Tourmodel> dsTour = new List<Tourmodel>();
 
@@ -299,62 +292,25 @@ namespace DAL_TourDL
                     _conn.Close();
             }
         }
-    public bool themTour(Tourmodel tour)
-    {
-        try
+        public bool themTour(Tourmodel tour)
         {
-            _conn.Open();
-            string sql = string.Format(
-                "INSERT INTO Tour(TenTour,MoTa,GiaCo,Ban,TrangThai"
-                + "VALUES (N'{0},N'{1},{2},{3})",
-                tour.TenTour,
-                tour.MoTa,
-                tour.GiaCoBan,
-                tour.TrangThai
+            try
+            {
+                _conn.Open();
+
+                string sql = string.Format(
+                    "INSERT INTO Tour(TenTour, MoTa, GiaCoBan, TrangThai) " +
+                    "VALUES (N'{0}', N'{1}', {2}, {3})",
+
+                    tour.TenTour,
+                    tour.MoTa,
+                    tour.GiaCoBan,
+                    tour.TrangThai
                 );
-            SqlCommand cmd = new SqlCommand(sql, _conn);
-            if (cmd.ExecuteNonQuery() > 0)
-                return true;
-        }
-        catch
-        {
 
-        }
-        finally
-        {
-            _conn.Close();
-        }
-        return false;
-    }
-        public bool suaTour(Tourmodel tour)
-        {
-            try
-            {
-                _conn.Open();
-                string sql =
-                "UPDATE Tour SET" +
-                "TenTour = N'" + tour.TenTour + "', " +
-                "MoTa = N'" + tour.MoTa + "', " +
-                "GiaCoBang = " + tour.GiaCoBan + ", " +
-                "TrangThai = " + tour.TrangThai +
-                " WHERE Id = " + tour.Id;
-                SqlCommand cmd = new SqlCommand(sql, _conn);
-                if (cmd.ExecuteNonQuery() > 0)
-                    return true;
+                SqlCommand cmd =
+                    new SqlCommand(sql, _conn);
 
-            }
-            catch { }
-            finally { _conn.Close(); }
-            return false;
-        }
-        public bool xoaTour(int Id)
-        {
-            try
-            {
-                _conn.Open();
-                string sql =
-                    "UPDATE Tour SET TRANGTHAI = 0 WHERE Id = " +Id;
-                SqlCommand cmd = new SqlCommand(sql, _conn);
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
             }
@@ -362,7 +318,75 @@ namespace DAL_TourDL
             {
 
             }
-            finally { _conn.Close(); }
+            finally
+            {
+                _conn.Close();
+            }
+
+            return false;
+        }
+        public bool xoaTour(int id)
+        {
+            try
+            {
+                _conn.Open();
+
+                string sql =
+                    "DELETE FROM Tour WHERE Id = " + id;
+
+                SqlCommand cmd =
+                    new SqlCommand(sql, _conn);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                _conn.Close();
+            }
+
+            return false;
+        }
+        public bool suaTour(Tourmodel tour)
+        {
+            try
+            {
+                _conn.Open();
+
+                string sql = string.Format(
+                    "UPDATE Tour SET " +
+                    "TenTour = N'{0}', " +
+                    "MoTa = N'{1}', " +
+                    "GiaCoBan = {2}, " +
+                    "TrangThai = {3} " +
+                    "WHERE Id = {4}",
+
+                    tour.TenTour,
+                    tour.MoTa,
+                    tour.GiaCoBan,
+                    tour.TrangThai,
+                    tour.Id
+                );
+
+                SqlCommand cmd =
+                    new SqlCommand(sql, _conn);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                _conn.Close();
+            }
+
             return false;
         }
     }

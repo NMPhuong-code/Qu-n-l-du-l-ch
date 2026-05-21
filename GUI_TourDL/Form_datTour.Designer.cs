@@ -28,18 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtEmailLienHe = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.btnThanhToan = new System.Windows.Forms.Button();
+            this.chkCamKet = new System.Windows.Forms.RadioButton();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSDTLienHe = new System.Windows.Forms.TextBox();
+            this.txtHoTenLienHe = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.flpDSHanhKhach = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.uC_HanhKhach1 = new GUI_TourDL.UC_HanhKhach();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.numTreEm = new System.Windows.Forms.NumericUpDown();
@@ -48,21 +47,25 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblgia_DatTour = new System.Windows.Forms.Label();
-            this.lblNgayDi_DatTour = new System.Windows.Forms.Label();
-            this.lblTenTour_DatTour = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblMoTaHienThi = new System.Windows.Forms.Label();
+            this.lblGiaTourHienThi = new System.Windows.Forms.Label();
+            this.lblTenTourHienThi = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.uC_HanhKhach1 = new GUI_TourDL.UC_HanhKhach();
             this.flpDSHanhKhach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTreEm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNguoiLon)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox4
+            // txtEmailLienHe
             // 
-            this.textBox4.Location = new System.Drawing.Point(138, 90);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(203, 22);
-            this.textBox4.TabIndex = 53;
+            this.txtEmailLienHe.Location = new System.Drawing.Point(138, 90);
+            this.txtEmailLienHe.Name = "txtEmailLienHe";
+            this.txtEmailLienHe.Size = new System.Drawing.Size(203, 22);
+            this.txtEmailLienHe.TabIndex = 53;
             // 
             // label3
             // 
@@ -74,30 +77,31 @@
             this.label3.TabIndex = 50;
             this.label3.Text = "Email";
             // 
-            // button1
+            // btnThanhToan
             // 
-            this.button1.BackColor = System.Drawing.Color.MediumBlue;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(549, 504);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(226, 41);
-            this.button1.TabIndex = 49;
-            this.button1.Text = "Thanh toán";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnThanhToan.BackColor = System.Drawing.Color.MediumBlue;
+            this.btnThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThanhToan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnThanhToan.Location = new System.Drawing.Point(545, 518);
+            this.btnThanhToan.Name = "btnThanhToan";
+            this.btnThanhToan.Size = new System.Drawing.Size(226, 41);
+            this.btnThanhToan.TabIndex = 49;
+            this.btnThanhToan.Text = "Thanh toán";
+            this.btnThanhToan.UseVisualStyleBackColor = false;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click_1);
             // 
-            // radioButton1
+            // chkCamKet
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.radioButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.radioButton1.Location = new System.Drawing.Point(15, 593);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(249, 20);
-            this.radioButton1.TabIndex = 48;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Tôi cam kết thông tin đưa ra chính xác";
-            this.radioButton1.UseVisualStyleBackColor = false;
+            this.chkCamKet.AutoSize = true;
+            this.chkCamKet.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.chkCamKet.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.chkCamKet.Location = new System.Drawing.Point(15, 593);
+            this.chkCamKet.Name = "chkCamKet";
+            this.chkCamKet.Size = new System.Drawing.Size(249, 20);
+            this.chkCamKet.TabIndex = 48;
+            this.chkCamKet.TabStop = true;
+            this.chkCamKet.Text = "Tôi cam kết thông tin đưa ra chính xác";
+            this.chkCamKet.UseVisualStyleBackColor = false;
             // 
             // textBox3
             // 
@@ -106,19 +110,19 @@
             this.textBox3.Size = new System.Drawing.Size(203, 22);
             this.textBox3.TabIndex = 43;
             // 
-            // textBox2
+            // txtSDTLienHe
             // 
-            this.textBox2.Location = new System.Drawing.Point(499, 56);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(203, 22);
-            this.textBox2.TabIndex = 42;
+            this.txtSDTLienHe.Location = new System.Drawing.Point(499, 56);
+            this.txtSDTLienHe.Name = "txtSDTLienHe";
+            this.txtSDTLienHe.Size = new System.Drawing.Size(203, 22);
+            this.txtSDTLienHe.TabIndex = 42;
             // 
-            // textBox1
+            // txtHoTenLienHe
             // 
-            this.textBox1.Location = new System.Drawing.Point(138, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(203, 22);
-            this.textBox1.TabIndex = 41;
+            this.txtHoTenLienHe.Location = new System.Drawing.Point(138, 53);
+            this.txtHoTenLienHe.Name = "txtHoTenLienHe";
+            this.txtHoTenLienHe.Size = new System.Drawing.Size(203, 22);
+            this.txtHoTenLienHe.TabIndex = 41;
             // 
             // label7
             // 
@@ -142,6 +146,7 @@
             // 
             // flpDSHanhKhach
             // 
+            this.flpDSHanhKhach.AutoScroll = true;
             this.flpDSHanhKhach.Controls.Add(this.flowLayoutPanel2);
             this.flpDSHanhKhach.Controls.Add(this.uC_HanhKhach1);
             this.flpDSHanhKhach.Location = new System.Drawing.Point(12, 247);
@@ -156,13 +161,6 @@
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
             this.flowLayoutPanel2.TabIndex = 0;
-            // 
-            // uC_HanhKhach1
-            // 
-            this.uC_HanhKhach1.Location = new System.Drawing.Point(9, 3);
-            this.uC_HanhKhach1.Name = "uC_HanhKhach1";
-            this.uC_HanhKhach1.Size = new System.Drawing.Size(467, 295);
-            this.uC_HanhKhach1.TabIndex = 1;
             // 
             // label15
             // 
@@ -190,6 +188,7 @@
             this.numTreEm.Name = "numTreEm";
             this.numTreEm.Size = new System.Drawing.Size(97, 22);
             this.numTreEm.TabIndex = 57;
+            this.numTreEm.ValueChanged += new System.EventHandler(this.numTreEm_ValueChanged);
             // 
             // numNguoiLon
             // 
@@ -231,52 +230,83 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.lblgia_DatTour);
-            this.panel1.Controls.Add(this.lblNgayDi_DatTour);
-            this.panel1.Controls.Add(this.lblTenTour_DatTour);
-            this.panel1.Location = new System.Drawing.Point(549, 247);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.lblMoTaHienThi);
+            this.panel1.Controls.Add(this.lblGiaTourHienThi);
+            this.panel1.Controls.Add(this.lblTenTourHienThi);
+            this.panel1.Location = new System.Drawing.Point(518, 247);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(251, 246);
+            this.panel1.Size = new System.Drawing.Size(282, 251);
             this.panel1.TabIndex = 58;
             // 
-            // lblgia_DatTour
+            // label4
             // 
-            this.lblgia_DatTour.AutoSize = true;
-            this.lblgia_DatTour.Location = new System.Drawing.Point(38, 143);
-            this.lblgia_DatTour.Name = "lblgia_DatTour";
-            this.lblgia_DatTour.Size = new System.Drawing.Size(44, 16);
-            this.lblgia_DatTour.TabIndex = 67;
-            this.lblgia_DatTour.Text = "label6";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(4, 148);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 19);
+            this.label4.TabIndex = 70;
+            this.label4.Text = "Mô tả:";
             // 
-            // lblNgayDi_DatTour
+            // lblMoTaHienThi
             // 
-            this.lblNgayDi_DatTour.AutoSize = true;
-            this.lblNgayDi_DatTour.Location = new System.Drawing.Point(38, 84);
-            this.lblNgayDi_DatTour.Name = "lblNgayDi_DatTour";
-            this.lblNgayDi_DatTour.Size = new System.Drawing.Size(44, 16);
-            this.lblNgayDi_DatTour.TabIndex = 66;
-            this.lblNgayDi_DatTour.Text = "label4";
+            this.lblMoTaHienThi.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMoTaHienThi.Location = new System.Drawing.Point(84, 150);
+            this.lblMoTaHienThi.Name = "lblMoTaHienThi";
+            this.lblMoTaHienThi.Size = new System.Drawing.Size(152, 75);
+            this.lblMoTaHienThi.TabIndex = 67;
+            this.lblMoTaHienThi.Text = "label6";
             // 
-            // lblTenTour_DatTour
+            // lblGiaTourHienThi
             // 
-            this.lblTenTour_DatTour.AutoSize = true;
-            this.lblTenTour_DatTour.Location = new System.Drawing.Point(38, 31);
-            this.lblTenTour_DatTour.Name = "lblTenTour_DatTour";
-            this.lblTenTour_DatTour.Size = new System.Drawing.Size(44, 16);
-            this.lblTenTour_DatTour.TabIndex = 64;
-            this.lblTenTour_DatTour.Text = "label1";
+            this.lblGiaTourHienThi.AutoSize = true;
+            this.lblGiaTourHienThi.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGiaTourHienThi.Location = new System.Drawing.Point(4, 104);
+            this.lblGiaTourHienThi.Name = "lblGiaTourHienThi";
+            this.lblGiaTourHienThi.Size = new System.Drawing.Size(76, 19);
+            this.lblGiaTourHienThi.TabIndex = 66;
+            this.lblGiaTourHienThi.Text = "Giá tiền:";
+            // 
+            // lblTenTourHienThi
+            // 
+            this.lblTenTourHienThi.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenTourHienThi.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblTenTourHienThi.Location = new System.Drawing.Point(13, 31);
+            this.lblTenTourHienThi.Name = "lblTenTourHienThi";
+            this.lblTenTourHienThi.Size = new System.Drawing.Size(266, 58);
+            this.lblTenTourHienThi.TabIndex = 64;
+            this.lblTenTourHienThi.Text = "label1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(535, 133);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(236, 108);
+            this.pictureBox1.TabIndex = 59;
+            this.pictureBox1.TabStop = false;
+            // 
+            // uC_HanhKhach1
+            // 
+            this.uC_HanhKhach1.AutoScroll = true;
+            this.uC_HanhKhach1.Location = new System.Drawing.Point(9, 3);
+            this.uC_HanhKhach1.Name = "uC_HanhKhach1";
+            this.uC_HanhKhach1.Size = new System.Drawing.Size(467, 295);
+            this.uC_HanhKhach1.TabIndex = 1;
+            this.uC_HanhKhach1.TieuDeHanhKhach = "Thông tin hành khách";
             // 
             // Form_datTour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 637);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.numTreEm);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtEmailLienHe);
+            this.Controls.Add(this.btnThanhToan);
             this.Controls.Add(this.numNguoiLon);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.chkCamKet);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label18);
@@ -284,10 +314,10 @@
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.flpDSHanhKhach);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtHoTenLienHe);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtSDTLienHe);
             this.Controls.Add(this.label7);
             this.Name = "Form_datTour";
             this.Text = "Form_datTour";
@@ -298,20 +328,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.numNguoiLon)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button btnThanhToan;
+        private System.Windows.Forms.RadioButton chkCamKet;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSDTLienHe;
+        private System.Windows.Forms.TextBox txtHoTenLienHe;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtEmailLienHe;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flpDSHanhKhach;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
@@ -324,8 +355,10 @@
         private System.Windows.Forms.Label label19;
         private UC_HanhKhach uC_HanhKhach1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblgia_DatTour;
-        private System.Windows.Forms.Label lblNgayDi_DatTour;
-        private System.Windows.Forms.Label lblTenTour_DatTour;
+        private System.Windows.Forms.Label lblMoTaHienThi;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblGiaTourHienThi;
+        private System.Windows.Forms.Label lblTenTourHienThi;
     }
 }

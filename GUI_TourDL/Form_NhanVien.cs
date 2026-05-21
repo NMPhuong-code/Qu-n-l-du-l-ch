@@ -29,10 +29,22 @@ namespace GUI_TourDL
 
             pnlContent.Controls.Add(uc);
         }
-
+    
         private void btnQuanLyTour_Click(object sender, EventArgs e)
         {
             UC_QuanLyTour uc = new UC_QuanLyTour();
+            LoadControl(uc);
+        }
+
+        private void btnLichKhoiHanh_Click(object sender, EventArgs e)
+        {
+            UC_QuanLyLichKhoiHanh uc = new UC_QuanLyLichKhoiHanh();
+            LoadControl(uc);
+        }
+
+        private void btnQuanLyTaiKhoan_Click(object sender, EventArgs e)
+        {
+            UC_QuanLyTaiKhoan uc = new UC_QuanLyTaiKhoan();
             LoadControl(uc);
         }
     }

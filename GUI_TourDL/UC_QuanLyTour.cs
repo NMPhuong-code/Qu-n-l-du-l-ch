@@ -84,7 +84,8 @@ namespace GUI_TourDL
             tour.TenTour=txtTenTour.Text;
             tour.MoTa= txtMoTa.Text;
             tour.GiaCoBan= Convert.ToDecimal(txtGiaCoBan.Text);
-            tour.TrangThai= cbTrangThai.Text;
+            tour.TrangThai =
+                Convert.ToBoolean(cbTrangThai.SelectedValue);
             if (busTour.themTour(tour))
             {
                 MessageBox.Show("Thêm tour thành công");
@@ -114,8 +115,8 @@ namespace GUI_TourDL
             tour.TenTour = txtTenTour.Text;
             tour.MoTa = txtMoTa.Text;
             tour.GiaCoBan= Convert.ToDecimal(txtGiaCoBan.Text);
-            tour.TrangThai = cbTrangThai.Text;
-            if (busTour.suaTour(tour))
+            tour.TrangThai =
+                Convert.ToBoolean(cbTrangThai.SelectedValue); if (busTour.suaTour(tour))
             {
                 MessageBox.Show("Sửa tour thành cônng");
                 LoadTour();
@@ -154,15 +155,15 @@ namespace GUI_TourDL
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string key = txtTimKiem.Text.Trim();
-            if (key == "")
-            {
-                LoadTour();
-            }
-            else
-            {
-                dgvTour.DataSource = busTour.TimKiemQLyTour(key);
-            }
+            //string key = txtTimKiem.Text.Trim();
+            //if (key == "")
+            //{
+            //    LoadTour();
+            //}
+            //else
+            //{
+            //    dgvTour.DataSource = busTour.TimKiemQLyTour(key);
+            //}
         }
     }
 }

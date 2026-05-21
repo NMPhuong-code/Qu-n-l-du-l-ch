@@ -8,7 +8,7 @@ using DTO_TourDL;
 
 namespace DAL_TourDL
 {
-    public class DAL_TaiKhoan:DBConnect
+    public class DAL_TaiKhoan : DBConnect
     {
         public List<DTO_TaiKhoan> getTaiKhoan()
         {

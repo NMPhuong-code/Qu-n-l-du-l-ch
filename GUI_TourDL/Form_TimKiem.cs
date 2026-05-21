@@ -39,7 +39,7 @@ namespace GUI_TourDL
                 theTour.GiaTien = item.GiaCoBan.ToString("N0") + " VNĐ";
                 theTour.Data = item;
                 theTour.SoChoConTrong = item.SoChoConTrong;
-                theTour.NgayKhoiHanh = "Khởi hành: "
+                theTour.NgayKhoiHanh ="Khởi hành: "
                 + item.NgayKhoiHanh.ToString("dd/MM/yyyy");
                 theTour.OnSelect += TheTour_OnSelect;
 
@@ -60,7 +60,7 @@ namespace GUI_TourDL
             if (theTourClicked.Data != null)
             {
                 Form_datTour formDatTour =
-            new Form_datTour(theTourClicked.Data);
+    new Form_datTour(theTourClicked.Data);
                 formDatTour.StartPosition = FormStartPosition.CenterScreen;
                 formDatTour.ShowDialog();
 

@@ -94,6 +94,7 @@
             this.btnQuanLyTaiKhoan.TabIndex = 7;
             this.btnQuanLyTaiKhoan.Text = "Quản Lý Tài Khoản";
             this.btnQuanLyTaiKhoan.UseVisualStyleBackColor = true;
+            this.btnQuanLyTaiKhoan.Click += new System.EventHandler(this.btnQuanLyTaiKhoan_Click);
             // 
             // btnHoiVien
             // 
@@ -140,6 +141,7 @@
             this.btnLichKhoiHanh.Text = "Quản Lý Lịch Khởi Hành";
             this.btnLichKhoiHanh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLichKhoiHanh.UseVisualStyleBackColor = true;
+            this.btnLichKhoiHanh.Click += new System.EventHandler(this.btnLichKhoiHanh_Click);
             // 
             // btnQuanLyTour
             // 
@@ -179,7 +181,9 @@
             // 
             // pnlContent
             // 
-            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlContent.Location = new System.Drawing.Point(240, 0);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(1093, 643);
