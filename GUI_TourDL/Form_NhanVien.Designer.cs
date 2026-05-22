@@ -116,7 +116,6 @@
             this.btnXuLyTour.Size = new System.Drawing.Size(230, 45);
             this.btnXuLyTour.TabIndex = 5;
             this.btnXuLyTour.Text = "Xử Lý Tour";
-            this.btnXuLyTour.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXuLyTour.UseVisualStyleBackColor = true;
             this.btnXuLyTour.Click += new System.EventHandler(this.btnXuLyTour_Click);
             // 
@@ -140,7 +139,6 @@
             this.btnLichKhoiHanh.Size = new System.Drawing.Size(230, 45);
             this.btnLichKhoiHanh.TabIndex = 3;
             this.btnLichKhoiHanh.Text = "Quản Lý Lịch Khởi Hành";
-            this.btnLichKhoiHanh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLichKhoiHanh.UseVisualStyleBackColor = true;
             this.btnLichKhoiHanh.Click += new System.EventHandler(this.btnLichKhoiHanh_Click);
             // 
@@ -153,7 +151,6 @@
             this.btnQuanLyTour.Size = new System.Drawing.Size(230, 45);
             this.btnQuanLyTour.TabIndex = 2;
             this.btnQuanLyTour.Text = "Quản Lý Tour";
-            this.btnQuanLyTour.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQuanLyTour.UseVisualStyleBackColor = true;
             this.btnQuanLyTour.Click += new System.EventHandler(this.btnQuanLyTour_Click);
             // 
@@ -166,7 +163,6 @@
             this.btnQuanLyNguoiDung.Size = new System.Drawing.Size(230, 45);
             this.btnQuanLyNguoiDung.TabIndex = 1;
             this.btnQuanLyNguoiDung.Text = "Quản Lý Người Dùng";
-            this.btnQuanLyNguoiDung.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQuanLyNguoiDung.UseVisualStyleBackColor = true;
             this.btnQuanLyNguoiDung.Click += new System.EventHandler(this.btnQuanLyNguoiDung_Click);
             // 

@@ -1,63 +1,142 @@
 ﻿using BUS_TourDL;
+using DTO_TourDL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI_TourDL
 {
     public partial class Form_HuyTour : Form
     {
+        private int idDonHang;
+        private BUS_HuyTour busHT = new BUS_HuyTour();
+
         public Form_HuyTour()
         {
             InitializeComponent();
-        }
-        private int idDonHang;
-        private BUS_Tour bus = new BUS_Tour();
 
-        // Sửa Constructor để nhận mã đơn từ Form danh sách truyền sang
+            dtpNgayYeuCau.Value = DateTime.Now;
+            txtTrangThai.Text = "ChuaHoan";
+            txtTrangThai.ReadOnly = true;
+            txtTenTour.ReadOnly = true;
+            dtpNgayKhoiHanh.Enabled = false;
+            dtpNgayYeuCau.Enabled = false;
+        }
+
         public Form_HuyTour(int idDon)
         {
             InitializeComponent();
+
             idDonHang = idDon;
+
+            dtpNgayYeuCau.Value = DateTime.Now;
+            txtTrangThai.Text = "ChuaHoan";
+            txtTrangThai.ReadOnly = true;
+            txtTenTour.ReadOnly = true;
+            dtpNgayKhoiHanh.Enabled = false;
+            dtpNgayYeuCau.Enabled = false;
+        }
+        private void LoadThongTinDonTheoMa(string maDon)
+        {
+            if (string.IsNullOrWhiteSpace(maDon))
+                return;
+
+            DataTable dt = busHT.GetThongTinDonDatTourTheoMa(maDon);
+
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy thông tin đơn đặt tour.");
+                return;
+            }
+
+            DataRow row = dt.Rows[0];
+
+            txtMaDonDatTour.Text = row["MaDatTourBanDau"].ToString();
+            txtTenTour.Text = row["TenTour"].ToString();
+            dtpNgayKhoiHanh.Value = Convert.ToDateTime(row["NgayKhoiHanh"]);
+
+            txtTrangThai.Text = "ChuaHoan";
         }
 
         private void Form_HuyTour_Load(object sender, EventArgs e)
         {
-            // Hiển thị mã đơn lên label để khách biết đang hủy đơn nào
-            lblThongTin.Text = "Nhập lý do hủy cho đơn hàng: #" + idDonHang;
+            lblThongTin.Text = "Lý do hủy đơn";
+
+            if (idDonHang > 0)
+            {
+                txtMaDonDatTour.Text = idDonHang.ToString();
+            }
         }
 
-        private void btnXacNhan_Click(object sender, EventArgs e)
+        private void btnGuiYeuCau_Click(object sender, EventArgs e)
         {
-            string lyDo = txtLyDo.Text.Trim();
+            string lyDo = txtLyDoHuy.Text.Trim();
 
             if (string.IsNullOrEmpty(lyDo))
             {
-                MessageBox.Show("Vui lòng nhập lý do hủy tour cụ thể trước khi xác nhận!", "Thông báo");
+                MessageBox.Show("Vui lòng nhập lý do hủy tour.");
                 return;
             }
 
-            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn gửi yêu cầu hủy tour này không?", "Xác nhận hành động", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            int idDonDatTour = 0;
 
-            if (dr == DialogResult.Yes)
+            if (idDonHang > 0)
             {
-                // Gọi xuống tầng BUS để thực thi ghi nhận vào SQL Server
-                if (bus.GuiYeuCauHuyTour(idDonHang, lyDo))
+                idDonDatTour = idDonHang;
+            }
+            else
+            {
+                if (txtMaDonDatTour.Text.Trim() == "")
                 {
-                    MessageBox.Show("Gửi yêu cầu thành công! Vui lòng chờ nhân viên kiểm tra và phê duyệt.", "Thành công");
-                    this.DialogResult = DialogResult.OK; // Trả về kết quả OK để báo cho Form danh sách biết
-                    this.Close(); // Đóng form nhập lý do lại
+                    MessageBox.Show("Vui lòng nhập mã đơn đặt tour.");
+                    return;
+                }
+
+                idDonDatTour = busHT.GetIdDonDatTourTheoMa(txtMaDonDatTour.Text.Trim());
+            }
+
+            if (idDonDatTour == 0)
+            {
+                MessageBox.Show("Mã đơn đặt tour không hợp lệ hoặc không tồn tại.");
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show(
+                "Bạn có chắc chắn muốn gửi yêu cầu hủy tour này không?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (dr == DialogResult.No)
+            {
+                return;
+            }
+
+            DTO_HuyTour ht = new DTO_HuyTour
+            {
+                IdDonDatTour = idDonDatTour,
+                LyDo = lyDo,
+                NgayHuy = DateTime.Now,
+                SoTienHoan = 0,
+                TrangThaiHoanTien = "ChuaHoan"
+            };
+
+            try
+            {
+                if (busHT.ThemHuyTour(ht))
+                {
+                    MessageBox.Show("Gửi yêu cầu hủy tour thành công. Vui lòng chờ nhân viên xử lý.");
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Gửi yêu cầu thất bại. Vui lòng kiểm tra lại kết nối Database!");
+                    MessageBox.Show("Gửi yêu cầu thất bại.");
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi gửi yêu cầu hủy tour:\n" + ex.Message);
             }
         }
     }

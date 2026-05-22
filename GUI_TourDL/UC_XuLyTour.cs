@@ -16,6 +16,7 @@ namespace GUI_TourDL
     {
         BUS_HuyTour busHT = new BUS_HuyTour();
         BUS_PhanBoDatTour busPB = new BUS_PhanBoDatTour();
+        BUS_DonDatTour busDon = new BUS_DonDatTour();
         public UC_XuLyTour()
         {
             InitializeComponent();
@@ -735,6 +736,108 @@ namespace GUI_TourDL
         {
             LamMoiHuyHoan();
             LoadHuyHoanTour();
+        }
+        private void LoadDonDatTour()
+        {
+            dgvDonDatTour.DataSource = busDon.GetDonDatTour();
+        }
+        private void LamMoiDonDatTour()
+        {
+            txtIdDon.Clear();
+            txtMaDatTour.Clear();
+            txtSoLuongNguoi.Clear();
+            txtTongTienGoc.Clear();
+            txtSoTienGiam.Clear();
+            txtTongTienThanhToan.Clear();
+
+            if (cbKhachHang.Items.Count > 0)
+                cbKhachHang.SelectedIndex = 0;
+
+            if (cbLichKhoiHanh.Items.Count > 0)
+                cbLichKhoiHanh.SelectedIndex = 0;
+
+            if (cbHinhThucDatTour.Items.Count > 0)
+                cbHinhThucDatTour.SelectedIndex = 0;
+
+            if (cbTrangThaiDon.Items.Count > 0)
+                cbTrangThaiDon.SelectedIndex = 0;
+
+            dtpNgayDat.Value = DateTime.Now;
+        }
+        private void btnThemDon_Click(object sender, EventArgs e)
+        {
+            if (cbKhachHang.SelectedValue == null)
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng.");
+                return;
+            }
+
+            if (cbLichKhoiHanh.SelectedValue == null)
+            {
+                MessageBox.Show("Vui lòng chọn lịch khởi hành.");
+                return;
+            }
+
+            int soLuongNguoi;
+            if (!int.TryParse(txtSoLuongNguoi.Text.Trim(), out soLuongNguoi) || soLuongNguoi <= 0)
+            {
+                MessageBox.Show("Số lượng người phải là số và lớn hơn 0.");
+                return;
+            }
+            decimal tongTienGoc;
+            decimal soTienGiam;
+            decimal tongTienThanhToan;
+
+            decimal.TryParse(txtTongTienGoc.Text.Trim(), out tongTienGoc);
+            decimal.TryParse(txtSoTienGiam.Text.Trim(), out soTienGiam);
+            decimal.TryParse(txtTongTienThanhToan.Text.Trim(), out tongTienThanhToan);
+
+            if (tongTienThanhToan <= 0)
+            {
+                tongTienThanhToan = tongTienGoc - soTienGiam;
+            }
+
+            DTO_DonDatTour don = new DTO_DonDatTour
+            {
+                MaDatTourBanDau = busDon.TaoMaDatTour(),
+                IdKhachHang = Convert.ToInt32(cbKhachHang.SelectedValue),
+                IdLichKhoiHanhBanDau = Convert.ToInt32(cbLichKhoiHanh.SelectedValue),
+                SoLuongNguoi = soLuongNguoi,
+                HinhThucDatTour = cbHinhThucDatTour.Text,
+                IdKhuyenMai = null,
+                SoTienGiamKhuyenMai = soTienGiam,
+                TongTienGoc = tongTienGoc,
+                TongTienThanhToan = tongTienThanhToan,
+                TrangThaiDon = cbTrangThaiDon.Text,
+                NgayDat = dtpNgayDat.Value
+            };
+            if (string.IsNullOrWhiteSpace(don.HinhThucDatTour))
+            {
+                MessageBox.Show("Vui lòng chọn hình thức đặt tour.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(don.TrangThaiDon))
+            {
+                don.TrangThaiDon = "ChoXuLy";
+            }
+
+            if (busDon.ThemDonDatTour(don))
+            {
+                MessageBox.Show("Thêm đơn đặt tour thành công.");
+                LoadDonDatTour();
+                LamMoiDonDatTour();
+            }
+            else
+            {
+                MessageBox.Show("Thêm đơn đặt tour thất bại.");
+            }
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            LamMoiDonDatTour();
+
         }
     }
 }

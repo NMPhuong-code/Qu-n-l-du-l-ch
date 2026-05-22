@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DTO_DatTourTronGoi.cs" />
     <Compile Include="DTO_DiaDanh.cs" />
+    <Compile Include="DTO_DonDatTour.cs" />
     <Compile Include="DTO_HoiVien.cs" />
     <Compile Include="DTO_HuyTour.cs" />
     <Compile Include="DTO_LichKhoiHanh.cs" />
