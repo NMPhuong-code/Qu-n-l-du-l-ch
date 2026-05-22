@@ -21,6 +21,7 @@ namespace GUI_TourDL
         }
         private void btn_xacNhanDK_Click(object sender, EventArgs e)
         {
+            string matkhau = txtMKhau.Text.Trim();
             string hoTen = txtHoTen.Text.Trim();
             string sdt = txtSDT.Text.Trim();
             string cccd = txtCCCD_DK.Text.Trim();
@@ -54,14 +55,14 @@ namespace GUI_TourDL
                 return;
             }
 
-            string tenDangNhap = email;
+            string tenDangNhap = hoTen;
 
             if (tenDangNhap == "")
             {
-                tenDangNhap = sdt;
+                tenDangNhap = hoTen;
             }
 
-            string matKhau = cccd;
+            string matKhau = matkhau;
 
             if (busTK.kiemTraTrungTenDangNhap(tenDangNhap))
             {

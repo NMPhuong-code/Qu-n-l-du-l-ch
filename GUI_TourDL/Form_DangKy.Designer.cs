@@ -38,6 +38,8 @@
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.lblhoTen = new System.Windows.Forms.Label();
             this.lblSDT = new System.Windows.Forms.Label();
+            this.lblMatKhau = new System.Windows.Forms.Label();
+            this.txtMKhau = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -132,11 +134,30 @@
             this.lblSDT.TabIndex = 78;
             this.lblSDT.Text = "Số điện thoại";
             // 
+            // lblMatKhau
+            // 
+            this.lblMatKhau.AutoSize = true;
+            this.lblMatKhau.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMatKhau.Location = new System.Drawing.Point(67, 251);
+            this.lblMatKhau.Name = "lblMatKhau";
+            this.lblMatKhau.Size = new System.Drawing.Size(78, 19);
+            this.lblMatKhau.TabIndex = 89;
+            this.lblMatKhau.Text = "Mật khẩu";
+            // 
+            // txtMKhau
+            // 
+            this.txtMKhau.Location = new System.Drawing.Point(236, 251);
+            this.txtMKhau.Name = "txtMKhau";
+            this.txtMKhau.Size = new System.Drawing.Size(203, 22);
+            this.txtMKhau.TabIndex = 90;
+            // 
             // Form_DangKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 450);
+            this.Controls.Add(this.txtMKhau);
+            this.Controls.Add(this.lblMatKhau);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_xacNhanDK);
             this.Controls.Add(this.txtEmail);
@@ -166,5 +187,7 @@
         private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.Label lblhoTen;
         private System.Windows.Forms.Label lblSDT;
+        private System.Windows.Forms.Label lblMatKhau;
+        private System.Windows.Forms.TextBox txtMKhau;
     }
 }
