@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>CÁC HÌNH THỨC THANH TOÁN TẠI TOUR CỦA CHÚNG TÔI
+Thanh toán bằng tiền mặt:
+Quý khách vui lòng đến tại trụ sở văn phòng chính của Tour của chúng tôi, các chi nhánh và hệ thống đại lý của Du Lịch Của Chúng Tôi để tiến hành thanh toán.
+
+Hình thức chuyển khoản ngân hàng:
+Chủ Tài khoản: Công Ty Cổ Phần Đầu Tư Thương Mại Dịch Vụ Du Lịch Của Chúng Tôi
+
+Ngân hàng Á Châu - Chi nhánh Bắc Sài Gòn - TP.HCM - STK: 65734819
+
+Ngân hàng Vietcombank - CN Tân Sơn Nhất - TP.HCM - STK: 1014275383
+
+Quý khách vui lòng liên hệ với HOTLINE: (028) 73 081 888 để được hỗ trợ, tư vấn chi tiết về hình thức thanh toán chuyển khoản.  
+
+Khi thực hiện việc chuyển khoản, quý khách vui lòng ghi rõ họ tên, địa chỉ, điện thoại và nội dung chuyến du lịch cụ thể đã được quý khách chọn đăng ký.  
+
+Sau khi thực hiện việc chuyển khoản, quý khách vui lòng xác nhận biên lai với công ty và liên hệ nhân viên phụ trách tuyến để nhận được vé du lịch chính thức từ công ty Tour của chúng tôi.  
+
+Tour của chúng tôi sẽ không giải quyết các trường hợp hệ thống tự động hủy phiếu đăng ký nếu quý khách không thực hiện đúng những quy định trên.
+
+Thẻ ngân hàng nội địa ATM / Internet Banking thông qua cổng Ngân Lượng / Alepay
+Quý khách có thể thanh toán trực tuyến bằng thẻ nội địa, Bao gồm các loại thẻ ghi nợ nội địa mang thương hiệu của các ngân hàng Việt Nam.
+
+Tour của chúng tôi cam kết không lưu giữ bất kỳ thông tin nào về thẻ của quý khách hàng tại hệ thống của Tour của chúng tôi. Vì vậy, quý khách có thể hoàn toàn an tâm khi sử dụng các loại thẻ thanh toán tại website của công ty Tour của chúng tôi.
+
+Đối với hình thức thanh toán bằng thẻ ATM/ INTERNETBANKING quý khách vui lòng đăng ký dịch vụ Internet Banking với ngân hàng phát hành thẻ trước khi sử dụng hình thức thanh toán này.  
+
+Thanh toán thẻ quốc tế VISA / MASTER CARD / JCB / AMEX / AMERICAN EXPRES.. thông qua cổng Ngân Lượng / Alepay
+Tất cả các giao dịch của quý khách tại hệ thống Tour của chúng tôi đều được xử lý bằng giao thức bảo mật SSL của Master Card.
+
+Tour của chúng tôi cam kết không lưu giữ bất kỳ thông tin nào về thẻ của quý khách hàng tại hệ thống của Tour của chúng tôi. Vì vậy, quý khách có thể hoàn toàn an tâm khi sử dụng các loại thẻ thanh toán tại website của công ty Tour của chúng tôi.
+
+Hiện tại hệ thống website của chúng tôi chấp nhận thanh toán bằng các loại thẻ quốc tế sau: VISA, MASTER CARD, JCB, AMERICAN EXPRESS, AMEX…
+
+ĐIỀU KHOẢN BẮT BUỘC KHI THANH TOÁN ONLINE
+Lưu ý: Đối với các dịch vụ vé máy bay và khách sạn quý khách đặt và thanh toán Online, Tour của chúng tôi sẽ không chịu trách nhiệm hoàn, hủy, đổi trả hành trình (phòng). Quý khách không tới khách sạn của bạn đặt sẽ được coi là không nhận phòng và không được hoàn tiền đặt phòng đã thu (Chính sách khách sạn).
+
+ĐIỀU KHOẢN CHUNG
+Giá tất cả các dịch vụ được tính theo đơn vị Việt Nam Đồng (Việt Nam – VNĐ). Giá dịch vụ trong tour được liệt kê một cách rõ ràng trong phần “Bao gồm” trong các tour du lịch, dịch vụ xe, khách sạn,… Tour của chúng tôi không có nghĩa vụ thanh toán bất cứ chi phí nào không nằm trong phần “Bao gồm”.
+
+Trường hợp khách thanh toán bằng USD sẽ được quy đổi ra VNĐ theo tỉ giá của Ngân hàng thương mại cổ phần Ngoại thương Việt Nam tại thời điểm thanh toán.
+
+THANH TOÁN
+Khi đăng ký, quý khách vui lòng cung cấp đầy đủ thông tin và đóng một khoản tiền cọc để giữ chỗ. Số tiền cọc khác nhau tùy theo chương trình mà quý khách tùy chọn, số tiền còn lại sẽ thanh toán trước ngày khởi hành là 5 ngày làm việc.  
+
+Việc thanh toán xem là hoàn tất khi Tour của chúng tôi nhận được đủ tiền vé trước ngày khởi hành hoặc theo hợp đồng thỏa thuận giữa 2 bên. Bất kỳ việc thanh toán chậm trễ dẫn đến việc hủy dịch vụ không thuộc trách nhiệm của Tour của chúng tôi.</value>
+  </data>
+</root>
