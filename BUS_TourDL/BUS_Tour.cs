@@ -2,6 +2,7 @@
 using DTO_TourDL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace BUS_TourDL
 {
@@ -46,6 +47,14 @@ namespace BUS_TourDL
         {
             return dalTour.xoaTour(Id);
         }
-        
+        public DataTable LayLichSuTour(int id)
+        {
+            return dalTour.LayLichSuTour(id);
+        }
+        public bool GuiYeuCauHuyTour(int idDon, string lyDo)
+        {
+            if (string.IsNullOrEmpty(lyDo)) return false; // Chặn nếu lý do trống
+            return dalTour.XuLyHuyTourVaoDB(idDon, lyDo);
+        }
     }
 }

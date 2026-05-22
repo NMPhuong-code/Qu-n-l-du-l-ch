@@ -32,5 +32,24 @@ namespace BUS_TourDL
         {
             return dal.timKiemTaiKhoan(key);
         }
+        public DTO_TaiKhoan dangNhap(string tenDangNhap, string matKhau)
+        {
+            return dal.dangNhap(tenDangNhap, matKhau);
+        }
+        public bool kiemTraTrungTenDangNhap(string tenDangNhap)
+        {
+            return dal.kiemTraTrungTenDangNhap(tenDangNhap);
+        }
+        public bool dangKyKhachHang(string tenDangNhap, string matKhau,string tenKH,string email,string sdt, string cccd)
+        {
+            return dal.dangKyKhachHang(
+                tenDangNhap,
+                matKhau,
+                tenKH,
+                email,
+                sdt,
+                cccd
+                );
+        }
     }
 }

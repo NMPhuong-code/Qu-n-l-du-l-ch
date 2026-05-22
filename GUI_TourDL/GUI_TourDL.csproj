@@ -58,6 +58,18 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_ChiTietDonDat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ChiTietDonDat.Designer.cs">
+      <DependentUpon>Form_ChiTietDonDat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DangKy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DangKy.Designer.cs">
+      <DependentUpon>Form_DangKy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +81,18 @@
     </Compile>
     <Compile Include="Form_datTour.Designer.cs">
       <DependentUpon>Form_datTour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_HoiVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_HoiVien.Designer.cs">
+      <DependentUpon>Form_HoiVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_HuyTour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_HuyTour.Designer.cs">
+      <DependentUpon>Form_HuyTour.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_NhanVien.cs">
       <SubType>Form</SubType>
@@ -144,11 +168,23 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_ChiTietDonDat.resx">
+      <DependentUpon>Form_ChiTietDonDat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DangKy.resx">
+      <DependentUpon>Form_DangKy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_DangNhap.resx">
       <DependentUpon>Form_DangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_datTour.resx">
       <DependentUpon>Form_datTour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_HoiVien.resx">
+      <DependentUpon>Form_HoiVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_HuyTour.resx">
+      <DependentUpon>Form_HuyTour.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_NhanVien.resx">
       <DependentUpon>Form_NhanVien.cs</DependentUpon>
@@ -211,6 +247,7 @@
     <None Include="bannerDLich.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" />
     <None Include="Resources\airplane.png" />
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +275,8 @@
     <None Include="Resources\google.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
     <Content Include="Database\QuanLiTour.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

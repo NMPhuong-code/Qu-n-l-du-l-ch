@@ -40,6 +40,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnHoiVien = new System.Windows.Forms.Button();
+            this.btnDonDaDat = new System.Windows.Forms.Button();
+            this.btnTaiKhoan = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -203,6 +206,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnHoiVien);
+            this.panel2.Controls.Add(this.btnDonDaDat);
+            this.panel2.Controls.Add(this.btnTaiKhoan);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.btnLogin);
             this.panel2.Controls.Add(this.button3);
@@ -214,6 +220,42 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(960, 104);
             this.panel2.TabIndex = 12;
+            // 
+            // btnHoiVien
+            // 
+            this.btnHoiVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHoiVien.Location = new System.Drawing.Point(705, 28);
+            this.btnHoiVien.Name = "btnHoiVien";
+            this.btnHoiVien.Size = new System.Drawing.Size(136, 24);
+            this.btnHoiVien.TabIndex = 10;
+            this.btnHoiVien.Text = "Hội Viên";
+            this.btnHoiVien.UseVisualStyleBackColor = true;
+            this.btnHoiVien.Visible = false;
+            this.btnHoiVien.Click += new System.EventHandler(this.btnHoiVien_Click);
+            // 
+            // btnDonDaDat
+            // 
+            this.btnDonDaDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDonDaDat.Location = new System.Drawing.Point(586, 26);
+            this.btnDonDaDat.Name = "btnDonDaDat";
+            this.btnDonDaDat.Size = new System.Drawing.Size(99, 28);
+            this.btnDonDaDat.TabIndex = 9;
+            this.btnDonDaDat.Text = "Lịch sử đặt ";
+            this.btnDonDaDat.UseVisualStyleBackColor = true;
+            this.btnDonDaDat.Visible = false;
+            this.btnDonDaDat.Click += new System.EventHandler(this.btnDonDaDat_Click);
+            // 
+            // btnTaiKhoan
+            // 
+            this.btnTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaiKhoan.Location = new System.Drawing.Point(465, 26);
+            this.btnTaiKhoan.Name = "btnTaiKhoan";
+            this.btnTaiKhoan.Size = new System.Drawing.Size(105, 30);
+            this.btnTaiKhoan.TabIndex = 8;
+            this.btnTaiKhoan.Text = "button1";
+            this.btnTaiKhoan.UseVisualStyleBackColor = true;
+            this.btnTaiKhoan.Visible = false;
+            this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
             // 
             // button2
             // 
@@ -275,7 +317,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(102, 39);
             this.button4.TabIndex = 3;
-            this.button4.Text = "Liên hệ";
+            this.button4.Text = "Tour theo yêu cầu";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // label4
@@ -303,10 +345,9 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::GUI_TourDL.Properties.Resources.Pquoc;
-            this.pictureBox6.Location = new System.Drawing.Point(341, 524);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox6.Location = new System.Drawing.Point(303, 419);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(261, 141);
+            this.pictureBox6.Size = new System.Drawing.Size(232, 113);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 16;
             this.pictureBox6.TabStop = false;
@@ -314,10 +355,9 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::GUI_TourDL.Properties.Resources.tourCaoCap;
-            this.pictureBox5.Location = new System.Drawing.Point(51, 524);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox5.Location = new System.Drawing.Point(45, 419);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(261, 141);
+            this.pictureBox5.Size = new System.Drawing.Size(232, 113);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 15;
             this.pictureBox5.TabStop = false;
@@ -326,19 +366,18 @@
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Image = global::GUI_TourDL.Properties.Resources.bannerDLich;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 104);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 83);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(960, 259);
+            this.pictureBox1.Size = new System.Drawing.Size(853, 207);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 694);
+            this.ClientSize = new System.Drawing.Size(853, 555);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
@@ -389,6 +428,9 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Button btnTaiKhoan;
+        private System.Windows.Forms.Button btnDonDaDat;
+        private System.Windows.Forms.Button btnHoiVien;
     }
 }
 

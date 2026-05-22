@@ -44,6 +44,7 @@
     <Compile Include="DAL_DatTour.cs" />
     <Compile Include="DAL_DiaDanh.cs" />
     <Compile Include="DAL_HuyTour.cs" />
+    <Compile Include="DAL_HoiVien.cs" />
     <Compile Include="DAL_LichKhoiHanh.cs" />
     <Compile Include="DAL_LuuDonHang.cs" />
     <Compile Include="DAL_NguoiDung.cs" />

@@ -177,42 +177,29 @@ namespace GUI_TourDL
                 return;
             }
 
-            decimal giaTourHienTai =
-                tourDuocChon.GiaCoBan;
+            decimal giaTourHienTai = tourDuocChon.GiaCoBan;
 
-            DTO_DatTourTronGoi donDat =
-                new DTO_DatTourTronGoi();
+            DTO_DatTourTronGoi donDat = new DTO_DatTourTronGoi();
+            donDat.IdKhachHang = DTO_TourDL.DTO_LuuThongTin.IdKhachHangHienTai;
+            donDat.TenNguoiDat = txtHoTenLienHe.Text;
+            donDat.SDTNguoiDat =  txtSDTLienHe.Text;
 
-            donDat.TenNguoiDat =
-                txtHoTenLienHe.Text;
+            donDat.EmailNguoiDat =txtEmailLienHe.Text;
 
-            donDat.SDTNguoiDat =
-                txtSDTLienHe.Text;
+            donDat.NgayDat = DateTime.Now;
 
-            donDat.EmailNguoiDat =
-                txtEmailLienHe.Text;
-
-            donDat.NgayDat =
-                DateTime.Now;
-
-            donDat.TrangThaiDon =
-                "Chờ thanh toán";
+            donDat.TrangThaiDon =  "Chờ thanh toán";
 
             // QUAN TRỌNG NHẤT
-            donDat.IdLich =
-                tourDuocChon.IdLich;
+            donDat.IdLich =tourDuocChon.IdLich;
 
-            int soNguoiLon =
-                (int)numNguoiLon.Value;
+            int soNguoiLon =(int)numNguoiLon.Value;
 
-            int soTreEm =
-                (int)numTreEm.Value;
+            int soTreEm =(int)numTreEm.Value;
 
-            donDat.SoLuong =
-                soNguoiLon + soTreEm;
+            donDat.SoLuong =soNguoiLon + soTreEm;
 
-            donDat.DanhSachNguoiDi =
-                ThuThapDanhSachNguoiDi();
+            donDat.DanhSachNguoiDi = ThuThapDanhSachNguoiDi();
 
             Form_ThanhToan frmThanhToan =
                 new Form_ThanhToan(

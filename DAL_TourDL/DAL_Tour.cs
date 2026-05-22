@@ -240,8 +240,7 @@ namespace DAL_TourDL
 
                 string sqlInsert = @"
                     INSERT INTO DonDatTour 
-                    (
-                        MaDatTourBanDau,
+                    (   MaDatTourBanDau,
                         IdKhachHang,
                         IdLichKhoiHanhBanDau,
                         SoLuongNguoi,
@@ -252,8 +251,7 @@ namespace DAL_TourDL
                         NgayDat
                     )
                     VALUES 
-                    (
-                         @MaDatTourBanDau,
+                    (   @MaDatTourBanDau,
                         @IdKhachHang,
                         @IdLichKhoiHanhBanDau,
                         @SoLuongNguoi,
@@ -265,6 +263,7 @@ namespace DAL_TourDL
                     )";
 
                 SqlCommand cmdInsert = new SqlCommand(sqlInsert, _conn, tran);
+                string maDon = "BK_" +DateTime.Now.ToString("yyyyMMddHHmmss");
 
                 int maKH = don.IdKhachHang > 0 ? don.IdKhachHang : 1;
                 if (string.IsNullOrEmpty(don.MaDatTourBanDau))
@@ -395,6 +394,71 @@ namespace DAL_TourDL
             }
 
             return false;
+     }
+
+        public DataTable LayLichSuTour(int idKH)
+        {
+            DataTable dt = new DataTable();
+            if (_conn.State == ConnectionState.Closed) _conn.Open();
+            try
+            {
+                string sql = @"SELECT 
+                        d.Id,
+                        t.TenTour,
+                        l.NgayKhoiHanh,
+                        d.TrangThaiDon
+                       FROM DonDatTour d
+                       INNER JOIN LichKhoiHanh l ON d.IdLichKhoiHanhBanDau = l.Id
+                       INNER JOIN Tour t ON l.IdTour = t.Id
+                       WHERE d.IdKhachHang = @Id
+                       ORDER BY l.NgayKhoiHanh DESC";
+
+                SqlCommand cmd = new SqlCommand(sql, _conn);
+                cmd.Parameters.AddWithValue("@Id", idKH);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            catch (Exception ex) { Console.WriteLine("Lỗi DAL: " + ex.Message); }
+            finally { _conn.Close(); }
+            return dt;
+        }
+        public bool XuLyHuyTourVaoDB(int idDon, string lyDo)
+        {
+            if (_conn.State == ConnectionState.Closed)
+                _conn.Open();
+
+            SqlTransaction trans = _conn.BeginTransaction();
+
+            try
+            {
+                // Chèn đúng cấu trúc bảng HuyTour của bạn (Có cột TrangThaiDuyet)
+                string sqlHuy = @"INSERT INTO HuyTour (IdDonDatTour, LyDo, NgayHuy, SoTienHoan, TrangThaiHoanTien, TrangThaiDuyet) 
+                                  VALUES (@IdDon, @LyDo, GETDATE(), 0, NULL, N'Chờ duyệt')";
+
+                SqlCommand cmdHuy = new SqlCommand(sqlHuy, _conn, trans);
+                cmdHuy.Parameters.AddWithValue("@IdDon", idDon);
+                cmdHuy.Parameters.AddWithValue("@LyDo", lyDo);
+                cmdHuy.ExecuteNonQuery();
+
+                // Cập nhật trạng thái đơn hàng gốc sang trạng thái 'Chờ duyệt hủy'
+                string sqlDon = "UPDATE DonDatTour SET TrangThaiDon = N'Chờ duyệt hủy' WHERE Id = @IdDon";
+                SqlCommand cmdDon = new SqlCommand(sqlDon, _conn, trans);
+                cmdDon.Parameters.AddWithValue("@IdDon", idDon);
+                cmdDon.ExecuteNonQuery();
+
+                trans.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                trans.Rollback();
+                Console.WriteLine("Lỗi SQL thực thi hủy tại DAL: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                _conn.Close();
+            }
         }
     }
 }

@@ -16,7 +16,20 @@ namespace DTO_TourDL
             public string TrangThai { get; set; }
             public int IdNhomQuyen { get; set; }
             public string TenNhomQuyen { get; set; }
-        
-    
-}
+        public int IdKhachHang { get; set; }
+
+        public DTO_TaiKhoan()
+        {
+        }
+
+        public DTO_TaiKhoan(string tenDangNhap, string matKhau, string vaiTro, string trangThai, int idNhomQuyen)
+        {
+            TenDangNhap = tenDangNhap;
+            MatKhau = matKhau;
+            VaiTro = vaiTro;
+            TrangThai = trangThai;
+            IdNhomQuyen = idNhomQuyen;
+        }
+
+    }
 }

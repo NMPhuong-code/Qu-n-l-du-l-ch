@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS_TourDL;
+using DTO_TourDL;
 
 namespace GUI_TourDL
 {
@@ -17,7 +18,9 @@ namespace GUI_TourDL
         {
             InitializeComponent();
         }
-
+        public int idKhachHangLogined = 0; // Biến lưu ID khách hàng sau khi đăng nhập thành công
+        public string tenKhachHangLogined = "";
+        private DTO_TaiKhoan taiKhoanDangNhap = null;
         private void Form1_Load(object sender, EventArgs e) {
         //{
         //    cbDiaDiem.Items.Clear();
@@ -80,19 +83,89 @@ namespace GUI_TourDL
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Form_DangNhap frmDangNhap =new Form_DangNhap();
+            Form_DangNhap frm = new Form_DangNhap();
+            frm.Owner = this;
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                taiKhoanDangNhap = frm.taiKhoanDangNhap;
+
+                btnLogin.Visible = false;
+                btnTaiKhoan.Visible = true;
+                btnTaiKhoan.Text = taiKhoanDangNhap.TenDangNhap;
+
+                // Bật nút "Lịch sử đặt" hiển thị lên thanh menu
+                btnDonDaDat.Visible = true;
+                // Bật nút "Hội Viên" khi đăng nhập thành công
+                btnHoiVien.Visible = true;
+            }
         }
 
         private void cbDiaDiem_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void DangXuat(object sender,EventArgs e)
         {
+            taiKhoanDangNhap = null;
+            btnTaiKhoan.Visible = false;
+            btnLogin.Visible = true;
+
+            // ĐĂNG XUẤT THÌ ẨN ĐI: Chuyển thành false để khách vãng lai không bấm được
+            btnDonDaDat.Visible = false;
+            btnHoiVien.Visible = false;
+
+            btnTaiKhoan.Text = "";
+            MessageBox.Show("Đăng xuất thành công!");
+        }
+
+        private void btnTaiKhoan_Click(object sender, EventArgs e)
+        {
+            DialogResult rs =
+        MessageBox.Show(
+            "Bạn muốn đăng xuất?",
+            "Xác nhận",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (rs == DialogResult.Yes)
+            {
+                taiKhoanDangNhap = null;
+                btnTaiKhoan.Visible = false;
+
+                btnLogin.Visible = true;
+                btnDonDaDat.Visible = false;
+                btnHoiVien.Visible = false;
+
+                btnTaiKhoan.Text = "";
+
+                MessageBox.Show(
+                    "Đăng xuất thành công!");
+            }
+        }
+
+        private void btnDonDaDat_Click(object sender, EventArgs e)
+        {
+            if (taiKhoanDangNhap != null)
+            {
+                int maKH = DTO_TourDL.DTO_LuuThongTin.IdKhachHangHienTai;
+                string tenKH = taiKhoanDangNhap.TenDangNhap;
+
+                // Truyền maKH chuẩn sang form hiển thị lịch sử
+                Form_ChiTietDonDat f = new Form_ChiTietDonDat(maKH, tenKH);
+                f.ShowDialog();
+            }
+        }
             Form_YeuCauGhepTachTour frm =
        new Form_YeuCauGhepTachTour();
 
+        private void btnHoiVien_Click(object sender, EventArgs e)
+        {
+            if (taiKhoanDangNhap != null)
+            {
+                Form_HoiVien f = new Form_HoiVien(taiKhoanDangNhap);
+                f.ShowDialog();
+            }
             frm.ShowDialog();
         }
     }

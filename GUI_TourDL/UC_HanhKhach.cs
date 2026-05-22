@@ -31,6 +31,8 @@ namespace GUI_TourDL
             };
         }
         public string TieuDeHanhKhach
+
+
         {
             get { return groupBoxHK.Text; }
             set { groupBoxHK.Text = value; }

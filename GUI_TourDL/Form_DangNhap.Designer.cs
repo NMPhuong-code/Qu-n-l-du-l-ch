@@ -33,8 +33,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.linkDangKy = new System.Windows.Forms.LinkLabel();
+            this.btn_DangNhap = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -45,9 +45,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(57, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 16);
+            this.label2.Size = new System.Drawing.Size(111, 16);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Số điện thoại hoặc email";
+            this.label2.Text = "Tên đăng nhập";
             // 
             // label3
             // 
@@ -82,29 +82,31 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Chưa là thành viên?";
             // 
-            // linkLabel1
+            // linkDangKy
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabel1.Location = new System.Drawing.Point(235, 224);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(85, 16);
-            this.linkLabel1.TabIndex = 6;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Đăng kí ngay";
+            this.linkDangKy.AutoSize = true;
+            this.linkDangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkDangKy.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkDangKy.Location = new System.Drawing.Point(235, 224);
+            this.linkDangKy.Name = "linkDangKy";
+            this.linkDangKy.Size = new System.Drawing.Size(85, 16);
+            this.linkDangKy.TabIndex = 6;
+            this.linkDangKy.TabStop = true;
+            this.linkDangKy.Text = "Đăng kí ngay";
+            this.linkDangKy.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDangKy_LinkClicked);
             // 
-            // button1
+            // btn_DangNhap
             // 
-            this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(116, 283);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(193, 51);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Đăng nhập";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_DangNhap.BackColor = System.Drawing.Color.Red;
+            this.btn_DangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_DangNhap.ForeColor = System.Drawing.Color.White;
+            this.btn_DangNhap.Location = new System.Drawing.Point(116, 283);
+            this.btn_DangNhap.Name = "btn_DangNhap";
+            this.btn_DangNhap.Size = new System.Drawing.Size(193, 51);
+            this.btn_DangNhap.TabIndex = 7;
+            this.btn_DangNhap.Text = "Đăng nhập";
+            this.btn_DangNhap.UseVisualStyleBackColor = false;
+            this.btn_DangNhap.Click += new System.EventHandler(this.btn_DangNhap_Click);
             // 
             // label1
             // 
@@ -137,8 +139,8 @@
             this.ClientSize = new System.Drawing.Size(492, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.btn_DangNhap);
+            this.Controls.Add(this.linkDangKy);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -157,8 +159,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.LinkLabel linkDangKy;
+        private System.Windows.Forms.Button btn_DangNhap;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
     }
