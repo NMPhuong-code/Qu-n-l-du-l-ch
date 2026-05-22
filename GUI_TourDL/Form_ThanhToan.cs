@@ -108,7 +108,12 @@ namespace GUI_TourDL
 
             // Trạng thái đơn
             donHang.TrangThaiDon = "DaXacNhan";
-
+            // Tạo mã đơn đặt tour nếu chưa có
+            if (string.IsNullOrEmpty(donHang.MaDatTourBanDau))
+            {
+                donHang.MaDatTourBanDau =
+                    "BK" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            }
             // Lưu đơn đặt tour
             bool ketQua = busTour.ThucHienDatTour(donHang);
 
@@ -136,10 +141,16 @@ namespace GUI_TourDL
 
                 // Lưu thanh toán
                 busTT.LuuThanhToan(tt);
+                Clipboard.SetText(donHang.MaDatTourBanDau);
 
-                MessageBox.Show("Thanh toán tour thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                MessageBox.Show(
+    "Thanh toán tour thành công!\n" +
+    "Mã đơn đặt tour của bạn là: " + donHang.MaDatTourBanDau +
+    "\nVui lòng lưu mã này để tra cứu hoặc gửi yêu cầu ghép/tách tour.",
+    "Thành công",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Information
+);
             }
             else
             {

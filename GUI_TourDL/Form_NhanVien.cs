@@ -53,5 +53,11 @@ namespace GUI_TourDL
             UC_QuanLyNguoiDung uc = new UC_QuanLyNguoiDung();
             LoadControl(uc);
         }
+
+        private void btnXuLyTour_Click(object sender, EventArgs e)
+        {
+            UC_XuLyTour uc = new UC_XuLyTour();
+            LoadControl(uc);
+        }
     }
 }

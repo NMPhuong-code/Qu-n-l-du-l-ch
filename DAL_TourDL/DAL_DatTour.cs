@@ -67,8 +67,9 @@ namespace DAL_TourDL
                     idKhachHang = Convert.ToInt32(cmdKhach.ExecuteScalar());
                 }
 
-                string maDatTour = "BK" + DateTime.Now.ToString("yyyyMMddHHmmss");
-
+                string maDatTour = string.IsNullOrEmpty(donHang.MaDatTourBanDau)
+                    ? "BK" + DateTime.Now.ToString("yyyyMMddHHmmssfff")
+                    : donHang.MaDatTourBanDau;
                 string sqlDonHang = @"INSERT INTO DonDatTour (MaDatTourBanDau, IdKhachHang, IdLichKhoiHanhBanDau, SoLuongNguoi, HinhThucDatTour, IdKhuyenMai, SoTienGiamKhuyenMai, TongTienGoc, TongTienThanhToan, TrangThaiDon, NgayDat)
                                       VALUES (@MaDatTour, @IdKhachHang, @IdLich, @SoLuong, @HinhThuc, @IdKhuyenMai, @SoTienGiam, @TongTienGoc, @TongTienThanhToan, @TrangThaiDon, @NgayDat);
                                       SELECT SCOPE_IDENTITY();";

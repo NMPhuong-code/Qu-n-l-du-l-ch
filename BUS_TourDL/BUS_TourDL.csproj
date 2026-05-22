@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="BUS_DatTour.cs" />
     <Compile Include="Bus_DiaDanh.cs" />
+    <Compile Include="BUS_HuyTour.cs" />
     <Compile Include="BUS_NguoiDung.cs" />
+    <Compile Include="BUS_PhanBoDatTour.cs" />
     <Compile Include="BUS_ThanhToan.cs" />
     <Compile Include="BUS_LichKhoiHanh.cs" />
     <Compile Include="BUS_NhomQuyen.cs" />

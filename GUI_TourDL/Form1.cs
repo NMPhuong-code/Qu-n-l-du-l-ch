@@ -87,5 +87,13 @@ namespace GUI_TourDL
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form_YeuCauGhepTachTour frm =
+       new Form_YeuCauGhepTachTour();
+
+            frm.ShowDialog();
+        }
     }
 }

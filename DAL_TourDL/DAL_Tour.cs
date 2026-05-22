@@ -241,6 +241,7 @@ namespace DAL_TourDL
                 string sqlInsert = @"
                     INSERT INTO DonDatTour 
                     (
+                        MaDatTourBanDau,
                         IdKhachHang,
                         IdLichKhoiHanhBanDau,
                         SoLuongNguoi,
@@ -252,6 +253,7 @@ namespace DAL_TourDL
                     )
                     VALUES 
                     (
+                         @MaDatTourBanDau,
                         @IdKhachHang,
                         @IdLichKhoiHanhBanDau,
                         @SoLuongNguoi,
@@ -265,7 +267,12 @@ namespace DAL_TourDL
                 SqlCommand cmdInsert = new SqlCommand(sqlInsert, _conn, tran);
 
                 int maKH = don.IdKhachHang > 0 ? don.IdKhachHang : 1;
+                if (string.IsNullOrEmpty(don.MaDatTourBanDau))
+                {
+                    don.MaDatTourBanDau = "BK" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                }
 
+                cmdInsert.Parameters.AddWithValue("@MaDatTourBanDau", don.MaDatTourBanDau);
                 cmdInsert.Parameters.AddWithValue("@IdKhachHang", maKH);
                 cmdInsert.Parameters.AddWithValue("@IdLichKhoiHanhBanDau", don.IdLich);
                 cmdInsert.Parameters.AddWithValue("@SoLuongNguoi", don.SoLuong);

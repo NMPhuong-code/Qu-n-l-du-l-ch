@@ -13,6 +13,7 @@ namespace DTO_TourDL
         public string EmailNguoiDat { get; set; }
         public string SDTNguoiDat { get; set; }
         public string CCCDNguoiDat { get; set; }
+        public string MaDatTourBanDau { get; set; }
 
         public int IdLich { get; set; }
         public int SoLuong { get; set; }

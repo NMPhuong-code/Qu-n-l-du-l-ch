@@ -88,6 +88,12 @@
     <Compile Include="Form_TimKiem.Designer.cs">
       <DependentUpon>Form_TimKiem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_YeuCauGhepTachTour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_YeuCauGhepTachTour.Designer.cs">
+      <DependentUpon>Form_YeuCauGhepTachTour.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListTour.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -126,6 +132,12 @@
     <Compile Include="UC_QuanLyTour.Designer.cs">
       <DependentUpon>UC_QuanLyTour.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_XuLyTour.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_XuLyTour.Designer.cs">
+      <DependentUpon>UC_XuLyTour.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_TimKiem.resx">
       <DependentUpon>Form_TimKiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_YeuCauGhepTachTour.resx">
+      <DependentUpon>Form_YeuCauGhepTachTour.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListTour.resx">
       <DependentUpon>ListTour.cs</DependentUpon>
@@ -175,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_QuanLyTour.resx">
       <DependentUpon>UC_QuanLyTour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_XuLyTour.resx">
+      <DependentUpon>UC_XuLyTour.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -118,6 +118,7 @@
             this.btnXuLyTour.Text = "Xử Lý Tour";
             this.btnXuLyTour.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXuLyTour.UseVisualStyleBackColor = true;
+            this.btnXuLyTour.Click += new System.EventHandler(this.btnXuLyTour_Click);
             // 
             // btnQuanLyThanhToan
             // 
